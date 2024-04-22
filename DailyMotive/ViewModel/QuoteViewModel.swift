@@ -24,9 +24,7 @@ final class QuoteViewModel: ObservableObject {
     func quoteLoad() {
         let resource: Resource<QuoteResponse> = Resource(
             base: "https://raw.githubusercontent.com/",
-            path: "Gwan-Son/DailyMotive/main/quotes.json",
-            params: [:],
-            header: ["Content-Type": "application/json"]
+            path: "Gwan-Son/DailyMotive/main/quotes.json"
         )
         
         network.load(resource)
