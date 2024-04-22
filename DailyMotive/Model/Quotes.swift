@@ -11,6 +11,11 @@ struct Quotes: Codable {
     
     var author: String
     var quote: String
+    
+    enum CodingKeys: String, CodingKey {
+        case author
+        case quote
+    }
 }
 
 extension Quotes {

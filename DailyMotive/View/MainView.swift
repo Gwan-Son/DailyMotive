@@ -10,6 +10,10 @@ import Combine
 
 struct MainView: View {
     
+    var temp: [Quotes] = []
+    
+    var viewModel: QuoteViewModel = QuoteViewModel(network: NetworkService(configuration: .default))
+    
     var body: some View {
         
         // TODO: - Notification Setting
@@ -44,6 +48,13 @@ struct MainView: View {
                 }
             }
             task.resume()
+            
+            
+            
+            viewModel.quoteLoad()
+            
+            print(viewModel.$quotes)
+            
         }
     }
 }

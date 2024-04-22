@@ -8,5 +8,5 @@
 import Foundation
 
 struct QuoteResponse: Decodable {
-    var items: [Quotes]
+    var quotes: [Quotes]
 }
