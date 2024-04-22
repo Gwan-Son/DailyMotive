@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
+import Combine
 
 struct MainView: View {
-    
-    var viewModel = QuoteViewModel(network: NetworkService(configuration: .default))
     
     var body: some View {
         
@@ -23,15 +22,32 @@ struct MainView: View {
         VStack {
             Text("Hello, World!")
             Text("카테고리")
+            
         }
         .onAppear {
-            viewModel.loadQuotes()
-            print(viewModel.$quotes)
-            
+            let url = URL(string: "https://raw.githubusercontent.com/Gwan-Son/DailyMotive/main/quotes.json")
+            let session = URLSession.shared
+            let task = session.dataTask(with: url!) { data, response, error in
+                if let error = error {
+                    print("error: \(error)")
+                    return
+                }
+                guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
+                    print("Invalid response")
+                    return
+                }
+                
+                if let data = data {
+                    if let dataString = String(data: data, encoding: .utf8) {
+                        print("Received Data: \(dataString)")
+                    }
+                }
+            }
+            task.resume()
         }
     }
 }
 
 #Preview {
-    MainView(viewModel: QuoteViewModel(network: .init(configuration: .default)))
+    MainView()
 }

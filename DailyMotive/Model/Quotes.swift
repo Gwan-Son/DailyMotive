@@ -7,16 +7,10 @@
 
 import Foundation
 
-struct Quotes: Hashable, Decodable, Identifiable {
+struct Quotes: Codable {
     
-    var id = UUID()
     var author: String
     var quote: String
-    
-    enum CodingKeys: String, CodingKey {
-        case author
-        case quote
-    }
 }
 
 extension Quotes {
