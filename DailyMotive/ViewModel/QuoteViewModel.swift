@@ -34,6 +34,7 @@ final class QuoteViewModel: ObservableObject {
         )
         
         network.load(resource)
+            .print("DEBUG: ")
             // "quotes" 이름만 가져옴
             .map { $0.quotes }
             // 에러처리는 빈 배열로 리턴
