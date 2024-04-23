@@ -10,51 +10,45 @@ import Combine
 
 struct MainView: View {
     
-    var temp: [Quotes] = []
+    @StateObject var viewModel: QuoteViewModel = QuoteViewModel(network: NetworkService(configuration: .default))
     
-    var viewModel: QuoteViewModel = QuoteViewModel(network: NetworkService(configuration: .default))
+    var subscription = Set<AnyCancellable>()
     
     var body: some View {
-        
-        // TODO: - Notification Setting
-        
-        
-        // TODO: - 오늘의 명언
-        // JSON -> Decoding -> UI
-        // 카테고리는 나중에 만들고
-        // 깃허브에 업로드 된 JSON을 받아서 뿌리는 걸로 대체.
-        VStack {
-            Text("Hello, World!")
-            Text("카테고리")
-            
-        }
-        .onAppear {
-            let url = URL(string: "https://raw.githubusercontent.com/Gwan-Son/DailyMotive/main/quotes.json")
-            let session = URLSession.shared
-            let task = session.dataTask(with: url!) { data, response, error in
-                if let error = error {
-                    print("error: \(error)")
-                    return
+        NavigationStack {
+            VStack {
+                if viewModel.isLoading {
+                    //TODO: - ProgressView()
+                    Text("로딩 중입니다.")
                 }
-                guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
-                    print("Invalid response")
-                    return
+                else {
+                    Spacer()
+                    
+                    Text("오늘의 명언입니다.")
+                        .font(.largeTitle)
+                    
+                    Spacer()
+                    
+                    NavigationLink {
+                        RandomQuoteView()
+                            .environmentObject(viewModel)
+                    } label: {
+                        Text("랜덤 명언")
+                            .font(.system(size: 20,weight: .bold))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, minHeight: 50)
+                            .background(.pink)
+                            .cornerRadius(25)
+                    }
+                    
+                    Spacer()
                 }
                 
-                if let data = data {
-                    if let dataString = String(data: data, encoding: .utf8) {
-                        print("Received Data: \(dataString)")
-                    }
-                }
             }
-            task.resume()
-            
-            
-            
-            viewModel.quoteLoad()
-            
-            print(viewModel.$quotes)
-            
+            .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
+            .onAppear {
+                viewModel.quoteLoad()
+        }
         }
     }
 }

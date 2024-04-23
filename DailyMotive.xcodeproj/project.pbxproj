@@ -13,6 +13,7 @@
 		9FA2927A2BD642C5001889E2 /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA292792BD642C5001889E2 /* Quotes.swift */; };
 		9FA2927D2BD6439B001889E2 /* QuoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2927C2BD6439B001889E2 /* QuoteViewModel.swift */; };
 		9FA292802BD64570001889E2 /* QuoteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA2927F2BD64570001889E2 /* QuoteResponse.swift */; };
+		9FA292822BD7719D001889E2 /* RandomQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA292812BD7719D001889E2 /* RandomQuoteView.swift */; };
 		9FEF3BB82BD6338B001A60D0 /* DailyMotiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEF3BB72BD6338B001A60D0 /* DailyMotiveApp.swift */; };
 		9FEF3BBC2BD6338C001A60D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FEF3BBB2BD6338C001A60D0 /* Assets.xcassets */; };
 		9FEF3BBF2BD6338C001A60D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9FEF3BBE2BD6338C001A60D0 /* Preview Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		9FA292792BD642C5001889E2 /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		9FA2927C2BD6439B001889E2 /* QuoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteViewModel.swift; sourceTree = "<group>"; };
 		9FA2927F2BD64570001889E2 /* QuoteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteResponse.swift; sourceTree = "<group>"; };
+		9FA292812BD7719D001889E2 /* RandomQuoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomQuoteView.swift; sourceTree = "<group>"; };
 		9FEF3BB42BD6338B001A60D0 /* DailyMotive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyMotive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FEF3BB72BD6338B001A60D0 /* DailyMotiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMotiveApp.swift; sourceTree = "<group>"; };
 		9FEF3BBB2BD6338C001A60D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				9FEF3BE12BD633C1001A60D0 /* MainView.swift */,
+				9FA292812BD7719D001889E2 /* RandomQuoteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				9FEF3BE22BD633C1001A60D0 /* MainView.swift in Sources */,
 				9FA292742BD64228001889E2 /* Resource.swift in Sources */,
 				9FA2927A2BD642C5001889E2 /* Quotes.swift in Sources */,
+				9FA292822BD7719D001889E2 /* RandomQuoteView.swift in Sources */,
 				9FA292802BD64570001889E2 /* QuoteResponse.swift in Sources */,
 				9FA292762BD6427C001889E2 /* Publisher+Utils.swift in Sources */,
 				9FA292712BD64168001889E2 /* NetworkService.swift in Sources */,
