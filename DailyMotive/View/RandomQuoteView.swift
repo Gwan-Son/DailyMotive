@@ -24,14 +24,21 @@ struct RandomQuoteView: View {
             VStack(alignment: .leading, spacing: 10){
                 if let randomQuote = quoteModel.randomQuote() {
                     Text("\(randomQuote.quote)")
-                        .font(.system(size: 36, weight: .bold))
+                        .font(.system(size: 28, weight: .bold))
+                        .lineSpacing(12.0)
+                        .lineLimit(4)
+                        .minimumScaleFactor(0.7)
+                        .padding(.bottom, 30)
                     Text("\(randomQuote.author)")
+                        .font(.system(size: 18, weight: .bold))
+                        .foregroundColor(.gray)
                 }
                 else {
                     Text("N/A")
-                        .font(.system(size: 36, weight: .bold))
+                        .font(.system(size: 28, weight: .bold))
+                        .padding(.bottom, 30)
                     Text("n/a")
-                        .font(.system(size: 24, weight: .bold))
+                        .font(.system(size: 18, weight: .bold))
                         .foregroundColor(.gray)
                 }
             }

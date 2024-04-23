@@ -14,15 +14,21 @@ final class QuoteViewModel: ObservableObject {
     
     init(network: NetworkService) {
         self.network = network
+        self.quoteLoad()
     }
     
     var subscriptions = Set<AnyCancellable>()
+    
+    @Published var category: [Category] = Category.list
     
     // Quotes들이 담길 배열
     @Published private(set) var quotes = [Quotes]()
     
     // 로딩 중인지
     @Published var isLoading: Bool = false
+    
+    // 현재 선택된 명언
+    private var currentQuote: Quotes?
     
     func quoteLoad() {
         // 데이터 로딩 중
@@ -50,10 +56,19 @@ final class QuoteViewModel: ObservableObject {
     }
     
     func randomQuote() -> Quotes? {
-        return quotes.randomElement()
+        var randomQuote: Quotes?
+        repeat {
+            randomQuote = quotes.randomElement()
+        } while randomQuote == currentQuote
+        currentQuote = randomQuote
+        return randomQuote
     }
     
     func updateRandomQuote() {
         objectWillChange.send()
+    }
+    
+    func filterQuotes(for category: Category) -> [Quotes] {
+        return quotes.filter { $0.category == category.id }
     }
 }

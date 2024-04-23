@@ -14,6 +14,11 @@ struct MainView: View {
     
     var subscription = Set<AnyCancellable>()
     
+    let layout: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -24,8 +29,18 @@ struct MainView: View {
                 else {
                     Spacer()
                     
-                    Text("오늘의 명언입니다.")
-                        .font(.largeTitle)
+                    ScrollView{
+                        LazyVGrid(columns: layout) {
+                            ForEach($viewModel.category) { $cate in
+                                NavigationLink {
+                                    CategoryView(category: $cate)
+                                        .environmentObject(viewModel)
+                                } label: {
+                                    CategoryCell(category: $cate)
+                                }
+                            }
+                        }
+                    }
                     
                     Spacer()
                     
@@ -45,10 +60,8 @@ struct MainView: View {
                 }
                 
             }
+            .navigationTitle("오늘의 명언")
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
-            .onAppear {
-                viewModel.quoteLoad()
-        }
         }
     }
 }
