@@ -10,7 +10,10 @@ import Combine
 
 struct CategoryView: View {
     
-    @EnvironmentObject var quoteModel: QuoteViewModel
+//    @EnvironmentObject var quoteModel: QuoteViewModel
+    
+    @StateObject var categoryQuoteViewModel: CategoryQuoteViewModel
+    
     @Binding var category: Category
     
     @State var cateQuotes: [Quotes] = []
@@ -27,11 +30,11 @@ struct CategoryView: View {
         }
         .navigationTitle(category.name)
         .onAppear {
-            cateQuotes = quoteModel.filterQuotes(for: category)
+            cateQuotes = categoryQuoteViewModel.filterQuotes(for: category)
         }
     }
 }
 
 #Preview {
-    CategoryView(category: .constant(Category.list[0])).environmentObject(QuoteViewModel(network: NetworkService(configuration: .default)))
+    CategoryView(categoryQuoteViewModel: CategoryQuoteViewModel(quotes: Quotes.list), category: .constant(Category.list[0]))
 }

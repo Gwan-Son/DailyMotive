@@ -1,14 +1,14 @@
 //
-//  MainView.swift
+//  HomeView.swift
 //  DailyMotive
 //
-//  Created by 심관혁 on 4/22/24.
+//  Created by 심관혁 on 4/24/24.
 //
 
 import SwiftUI
 import Combine
 
-struct MainView: View {
+struct HomeView: View {
     
     @StateObject var viewModel: QuoteViewModel = QuoteViewModel(network: NetworkService(configuration: .default))
     
@@ -18,9 +18,8 @@ struct MainView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-    
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack {
                 if viewModel.isLoading {
                     //TODO: - ProgressView()
@@ -61,11 +60,11 @@ struct MainView: View {
                 
             }
             .navigationTitle("오늘의 명언")
-            .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
+        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
         }
     }
 }
 
 #Preview {
-    MainView()
+    HomeView()
 }
