@@ -21,13 +21,13 @@ struct RandomQuoteView: View {
                 .frame(width: 50, height: 50)
                 .foregroundColor(.gray)
             
-            VStack(alignment: .leading, spacing: 10){
+            VStack(alignment: .center, spacing: 10){
                 if let randomQuote = randomQuoteViewModel.randomQuote() {
                     Text("\(randomQuote.quote)")
                         .font(.system(size: 28, weight: .bold))
                         .lineSpacing(12.0)
-                        .lineLimit(4)
-                        .minimumScaleFactor(0.7)
+                        .multilineTextAlignment(.center)
+                        .minimumScaleFactor(0.5)
                         .padding(.bottom, 30)
                     Text("\(randomQuote.author)")
                         .font(.system(size: 18, weight: .bold))
