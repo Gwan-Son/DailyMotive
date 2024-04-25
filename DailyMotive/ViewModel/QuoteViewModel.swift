@@ -27,9 +27,6 @@ final class QuoteViewModel: ObservableObject {
     // 로딩 중인지
     @Published var isLoading: Bool = false
     
-    // 현재 선택된 명언
-    private var currentQuote: Quotes?
-    
     func quoteLoad() {
         // 데이터 로딩 중
         isLoading = true
@@ -40,35 +37,19 @@ final class QuoteViewModel: ObservableObject {
         )
         
         network.load(resource)
+            // 디버깅용 코드
             .print("DEBUG: ")
             // "quotes" 이름만 가져옴
             .map { $0.quotes }
             // 에러처리는 빈 배열로 리턴
             .replaceError(with: [])
             // 해당 코드가 돌아갈 쓰레드
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             // 가져온 결과값을 quotes 배열에 저장
             .sink(receiveValue: { [weak self] fetchQuotes in
                 self?.quotes = fetchQuotes
                 self?.isLoading = false // 데이터 로딩 완료
             })
             .store(in: &subscriptions)
-    }
-    
-    func randomQuote() -> Quotes? {
-        var randomQuote: Quotes?
-        repeat {
-            randomQuote = quotes.randomElement()
-        } while randomQuote == currentQuote
-        currentQuote = randomQuote
-        return randomQuote
-    }
-    
-    func updateRandomQuote() {
-        objectWillChange.send()
-    }
-    
-    func filterQuotes(for category: Category) -> [Quotes] {
-        return quotes.filter { $0.category == category.id }
     }
 }

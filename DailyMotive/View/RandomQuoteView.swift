@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RandomQuoteView: View {
     
-    @EnvironmentObject var quoteModel: QuoteViewModel
+    @StateObject var randomQuoteViewModel: RandomQuoteViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -22,7 +22,7 @@ struct RandomQuoteView: View {
                 .foregroundColor(.gray)
             
             VStack(alignment: .leading, spacing: 10){
-                if let randomQuote = quoteModel.randomQuote() {
+                if let randomQuote = randomQuoteViewModel.randomQuote() {
                     Text("\(randomQuote.quote)")
                         .font(.system(size: 28, weight: .bold))
                         .lineSpacing(12.0)
@@ -43,10 +43,36 @@ struct RandomQuoteView: View {
                 }
             }
             
+            
+            HStack(alignment: .center, spacing: 20) {
+                Button {
+                    // Favorite
+                } label: {
+                    Image(systemName: "heart") // 사용자가 저장했다면 .fill
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 25)
+                        .foregroundColor(.gray)
+                }
+                
+                Button {
+                    // Share
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 30)
+                        .foregroundColor(.gray)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
+            
+            
             Spacer()
             
             Button(action: {
-                quoteModel.updateRandomQuote()
+                randomQuoteViewModel.updateRandomQuote()
             }, label: {
                 HStack {
                     Image(systemName: "arrow.triangle.2.circlepath")
@@ -59,11 +85,11 @@ struct RandomQuoteView: View {
                 .foregroundColor(.white)
             })
         }
-        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
+        .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
         
     }
 }
 
 #Preview {
-    RandomQuoteView().environmentObject(QuoteViewModel(network: NetworkService(configuration: .default)))
+    RandomQuoteView(randomQuoteViewModel: RandomQuoteViewModel(quotes: Quotes.list))
 }

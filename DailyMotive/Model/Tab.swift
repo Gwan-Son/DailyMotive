@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+enum Tab {
+    case home
+    case favorite
+    case setting
+}

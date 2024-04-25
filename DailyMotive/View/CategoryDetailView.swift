@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct CategoryView: View {
+struct CategoryDetailView: View {
     
 //    @EnvironmentObject var quoteModel: QuoteViewModel
     
@@ -36,5 +36,5 @@ struct CategoryView: View {
 }
 
 #Preview {
-    CategoryView(categoryQuoteViewModel: CategoryQuoteViewModel(quotes: Quotes.list), category: .constant(Category.list[0]))
+    CategoryDetailView(categoryQuoteViewModel: CategoryQuoteViewModel(quotes: Quotes.list), category: .constant(Category.list[0]))
 }

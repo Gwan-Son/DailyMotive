@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+final class CategoryQuoteViewModel: ObservableObject {
+    
+    @Published private(set) var quotes: [Quotes]
+    
+    init(quotes: [Quotes]) {
+        self.quotes = quotes
+    }
+    
+    func filterQuotes(for category: Category) -> [Quotes] {
+        return quotes.filter { $0.category == category.id }
+    }
+}

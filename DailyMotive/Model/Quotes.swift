@@ -9,7 +9,9 @@ import Foundation
 
 struct Quotes: Hashable, Codable, Identifiable {
     
-    var id: UUID = UUID()
+    var id: String {
+        return quote
+    }
     var author: String
     var quote: String
     var category: Int
@@ -34,5 +36,8 @@ struct Quotes: Hashable, Codable, Identifiable {
 }
 
 extension Quotes {
-    static let mock = Quotes(author: "작가", quote: "명언", category: 1)
+    static let list = [
+        Quotes(author: "마더 테레사", quote: "강렬한 사랑은 판단하지 않는다. 주기만 할 뿐이다.", category: 1),
+        Quotes(author: "빌 게이츠", quote: "여러분의 선생님이 엄격하다고 생각한다면, 직장 상사를 만날 때까지 기다려보세요. 상사는 (선생님처럼) 종신제가 아니니까요.(더 엄격할 거예요.)", category: 2)
+    ]
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct HomeView: View {
+struct MainView: View {
     
     @StateObject var viewModel: QuoteViewModel = QuoteViewModel(network: NetworkService(configuration: .default))
     
@@ -32,11 +32,12 @@ struct HomeView: View {
                         LazyVGrid(columns: layout) {
                             ForEach($viewModel.category) { $cate in
                                 NavigationLink {
-                                    CategoryView(category: $cate)
-                                        .environmentObject(viewModel)
+                                    let vm = CategoryQuoteViewModel(quotes: viewModel.quotes)
+                                    CategoryDetailView(categoryQuoteViewModel: vm,category: $cate)
                                 } label: {
                                     CategoryCell(category: $cate)
                                 }
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                             }
                         }
                     }
@@ -44,8 +45,8 @@ struct HomeView: View {
                     Spacer()
                     
                     NavigationLink {
-                        RandomQuoteView()
-                            .environmentObject(viewModel)
+                        let vm = RandomQuoteViewModel(quotes: viewModel.quotes)
+                        RandomQuoteView(randomQuoteViewModel: vm)
                     } label: {
                         Text("랜덤 명언")
                             .font(.system(size: 20,weight: .bold))
@@ -60,11 +61,11 @@ struct HomeView: View {
                 
             }
             .navigationTitle("오늘의 명언")
-        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
+        .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
         }
     }
 }
 
 #Preview {
-    HomeView()
+    MainView()
 }
