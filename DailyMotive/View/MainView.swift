@@ -12,7 +12,6 @@ struct MainView: View {
     
     @StateObject var viewModel: QuoteViewModel = QuoteViewModel(network: NetworkService(configuration: .default))
     
-    var subscription = Set<AnyCancellable>()
     
     let layout: [GridItem] = [
         GridItem(.flexible()),
@@ -22,8 +21,7 @@ struct MainView: View {
         NavigationView {
             VStack {
                 if viewModel.isLoading {
-                    //TODO: - ProgressView()
-                    Text("로딩 중입니다.")
+                    LoadingView()
                 }
                 else {
                     Spacer()
@@ -41,6 +39,7 @@ struct MainView: View {
                             }
                         }
                     }
+                    .scrollIndicators(.hidden)
                     
                     Spacer()
                     
@@ -67,5 +66,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    MainView(viewModel: QuoteViewModel(network: NetworkService(configuration: .default)))
 }

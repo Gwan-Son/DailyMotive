@@ -20,17 +20,22 @@ struct HomeView: View {
                     Text("Home")
                 }
                 .tag(Tab.home)
-            
-            // FavoriteView()
-            Text("cc")
+            Text("Search")
                 .tabItem {
-                    Image(systemName: "star")
-                    Text("Favorite")
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
                 }
-                .tag(Tab.favorite)
+                .tag(Tab.search)
+            // FavoriteView()
+            Text("Likes")
+                .tabItem {
+                    Image(systemName: "heart")
+                    Text("Likes")
+                }
+                .tag(Tab.likes)
             
             // SettingView()
-            Text("dd")
+            Text("Setting")
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text("Setting")

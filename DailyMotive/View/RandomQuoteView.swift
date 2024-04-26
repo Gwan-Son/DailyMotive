@@ -12,6 +12,7 @@ struct RandomQuoteView: View {
     @StateObject var randomQuoteViewModel: RandomQuoteViewModel
     
     var body: some View {
+        
         VStack(alignment: .leading, spacing: 20) {
             Spacer()
             
@@ -21,21 +22,29 @@ struct RandomQuoteView: View {
                 .frame(width: 50, height: 50)
                 .foregroundColor(.gray)
             
-            VStack(alignment: .center, spacing: 10){
+            VStack(alignment: .leading, spacing: 10){
                 if let randomQuote = randomQuoteViewModel.randomQuote() {
                     Text("\(randomQuote.quote)")
-                        .font(.system(size: 28, weight: .bold))
-                        .lineSpacing(12.0)
-                        .multilineTextAlignment(.center)
+                        .font(.callout)
+                        .bold()
                         .minimumScaleFactor(0.5)
-                        .padding(.bottom, 30)
-                    Text("\(randomQuote.author)")
-                        .font(.system(size: 18, weight: .bold))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(nil)
+                        .lineSpacing(12.0)
+                    
+                    Rectangle()
+                        .frame(width: 70, height: 1)
                         .foregroundColor(.gray)
+                        .padding(.top, 40)
+                    
+                    Text("\(randomQuote.author)")
+                        .font(.subheadline)
+                        .foregroundColor(.gray)
+                        .padding(.top, 5)
                 }
                 else {
                     Text("N/A")
-                        .font(.system(size: 28, weight: .bold))
+                        .font(.system(size: 24, weight: .bold))
                         .padding(.bottom, 30)
                     Text("n/a")
                         .font(.system(size: 18, weight: .bold))

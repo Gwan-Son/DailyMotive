@@ -17,13 +17,18 @@ struct CategoryCell: View {
                 .fill(LinearGradient(gradient: Gradient(colors: [backgroundColor(for: category.id - 1), backgroundColor(for: category.id)]), startPoint: .bottomLeading, endPoint: .topTrailing))
                 .frame(maxWidth: .infinity, minHeight: 100)
             
+            Image(category.imageName(id: category.id))
+                .resizable()
+                .scaledToFill()
+                .frame(height: 100)
+                .opacity(0.3)
+                .cornerRadius(20)
             
             Text(category.name)
-                .font(.system(size: 28, weight: .bold))
+                .font(.largeTitle)
+                .bold()
+//                .font(.system(size: 28, weight: .bold))
                 .foregroundColor(.white)
-            //                .frame(maxWidth: .infinity, minHeight: 100)
-            //                .background(backgroundColor(for: category.id))
-            //                .cornerRadius(20)
         }
     }
     

@@ -18,16 +18,26 @@ struct CategoryDetailView: View {
     
     @State var cateQuotes: [Quotes] = []
     
+    let layout: [GridItem] = [
+        GridItem(.flexible())
+    ]
+    
     var body: some View {
         ScrollView {
-            ForEach(cateQuotes) { quote in
-                Text(quote.quote)
-                    .font(.system(size: 18, weight: .bold))
-                Text(quote.author)
-                    .font(.system(size: 14))
-                    .foregroundColor(.gray)
+            LazyVGrid(columns: layout) {
+                ForEach($cateQuotes) { $quote in
+                    NavigationLink {
+                        QuoteDetailView(quote: $quote)
+                    } label: {
+                        QuoteCell(quotes: $quote)
+                    }
+
+                }
+                .padding(.bottom, 10)
             }
         }
+        .scrollIndicators(.hidden)
+        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
         .navigationTitle(category.name)
         .onAppear {
             cateQuotes = categoryQuoteViewModel.filterQuotes(for: category)
