@@ -9,7 +9,9 @@ import SwiftUI
 
 struct RandomQuoteView: View {
     
-    @StateObject var randomQuoteViewModel: RandomQuoteViewModel
+//    @StateObject var randomQuoteViewModel: RandomQuoteViewModel
+    
+    @EnvironmentObject var randomQuoteViewModel: RandomQuoteViewModel
     
     var body: some View {
         
@@ -100,5 +102,6 @@ struct RandomQuoteView: View {
 }
 
 #Preview {
-    RandomQuoteView(randomQuoteViewModel: RandomQuoteViewModel(quotes: Quotes.list))
+    RandomQuoteView()
+        .environmentObject(HomeViewModel().randomQuoteViewModel)
 }

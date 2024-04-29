@@ -14,7 +14,11 @@ final class RandomQuoteViewModel: ObservableObject {
     // 현재 선택된 명언
     private var currentQuote: Quotes?
     
-    init(quotes: [Quotes]) {
+    init() {
+        self.quotes = []
+    }
+    
+    func setup(with quotes: [Quotes]) {
         self.quotes = quotes
     }
     
