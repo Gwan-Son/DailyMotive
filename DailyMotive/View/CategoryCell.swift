@@ -17,14 +17,6 @@ struct CategoryCell: View {
                 .fill(LinearGradient(gradient: Gradient(colors: [backgroundColor(for: category.id - 1), backgroundColor(for: category.id)]), startPoint: .bottomLeading, endPoint: .topTrailing))
                 .frame(maxWidth: .infinity, minHeight: 100)
             
-            //            if let image = category.imageName(id: category.id) {
-            //                image
-            //                    .resizable()
-            //                    .scaledToFill()
-            //                    .frame(height: 100)
-            //                    .opacity(0.3)
-            //                    .cornerRadius(20)
-            //            }
             Image(String(category.id))
                 .resizable()
                 .scaledToFill()
@@ -36,13 +28,6 @@ struct CategoryCell: View {
                 .bold()
                 .foregroundColor(.white)
         }
-        //        Text(category.name)
-        //            .font(.title)
-        //            .bold()
-        //            .foregroundColor(.white)
-        //            .frame(maxWidth: .infinity, minHeight: 80)
-        //            .background(backgroundColor(for: category.id))
-        //            .cornerRadius(20)
     }
     
     func backgroundColor(for intValue: Int) -> Color {

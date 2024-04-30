@@ -12,39 +12,6 @@ struct Category: Hashable, Identifiable {
     
     let id: Int
     let name: String
-    
-    func imageName(id: Int) -> Image? {
-        let imageName: String
-        switch id {
-        case 1:
-            imageName = "1_love"
-        case 2:
-            imageName = "2_life"
-        case 3:
-            imageName = "3_study"
-        case 4:
-            imageName = "4_success"
-        case 5:
-            imageName = "5_friend"
-        case 6:
-            imageName = "6_readingBooks"
-        case 7:
-            imageName = "7_breakUp"
-        case 8:
-            imageName = "8_time"
-        case 9:
-            imageName = "9_effort"
-        case 10:
-            imageName = "10_hope"
-        case 11:
-            imageName = "11_challenge"
-        case 12:
-            imageName = "12_confidence"
-        default:
-            return nil
-        }
-        return Image(imageName)
-    }
 }
 // 1 - Love
 // 2 - Life
