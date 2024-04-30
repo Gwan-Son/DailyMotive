@@ -27,8 +27,8 @@ struct CategoryView: View {
                     LazyVGrid(columns: layout) {
                         ForEach($homeViewModel.category) { $cate in
                             NavigationLink {
-                                let vm = CategoryQuoteViewModel(quotes: homeViewModel.quotes)
-                                CategoryDetailView(categoryQuoteViewModel: vm,category: $cate)
+                                let vm = QuoteViewModel(quotes: homeViewModel.quotes)
+                                QuoteListView(quoteViewModel: vm,category: $cate)
                             } label: {
                                 CategoryCell(category: $cate)
                             }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class CategoryQuoteViewModel: ObservableObject {
+final class QuoteViewModel: ObservableObject {
     
     @Published private(set) var quotes: [Quotes]
     

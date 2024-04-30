@@ -15,7 +15,7 @@ final class RandomQuoteViewModel: ObservableObject {
     private var currentQuote: Quotes?
     
     init() {
-        self.quotes = []
+        self.quotes = Quotes.list
     }
     
     func setup(with quotes: [Quotes]) {

@@ -9,16 +9,15 @@ import SwiftUI
 
 struct RandomQuoteView: View {
     
-//    @StateObject var randomQuoteViewModel: RandomQuoteViewModel
-    
     @EnvironmentObject var randomQuoteViewModel: RandomQuoteViewModel
+    @EnvironmentObject var likesQuoteViewModel: LikesViewModel
     
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 20) {
             Spacer()
+                .frame(height: 150)
             
-            Image(systemName: "quote.closing")
+            Image(systemName: "quote.opening")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 50, height: 50)
@@ -54,15 +53,16 @@ struct RandomQuoteView: View {
                 }
             }
             
+            Spacer()
             
             HStack(alignment: .center, spacing: 20) {
                 Button {
-                    // Favorite
+                    // Likes
                 } label: {
                     Image(systemName: "heart") // 사용자가 저장했다면 .fill
                         .resizable()
-                        .scaledToFit()
-                        .frame(height: 25)
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
                         .foregroundColor(.gray)
                 }
                 
@@ -71,16 +71,13 @@ struct RandomQuoteView: View {
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                         .resizable()
-                        .scaledToFit()
-                        .frame(height: 30)
+                        .scaledToFill()
+                        .frame(width: 30, height: 30)
                         .foregroundColor(.gray)
                 }
             }
             .frame(maxWidth: .infinity)
-            .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
-            
-            
-            Spacer()
+            .padding(EdgeInsets(top: 50, leading: 0, bottom: 10, trailing: 0))
             
             Button(action: {
                 randomQuoteViewModel.updateRandomQuote()
@@ -98,10 +95,11 @@ struct RandomQuoteView: View {
         }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
         
+        
     }
 }
 
 #Preview {
     RandomQuoteView()
-        .environmentObject(HomeViewModel().randomQuoteViewModel)
+        .environmentObject(RandomQuoteViewModel())
 }

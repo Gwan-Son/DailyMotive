@@ -8,11 +8,11 @@
 import SwiftUI
 import Combine
 
-struct CategoryDetailView: View {
+struct QuoteListView: View {
     
 //    @EnvironmentObject var quoteModel: QuoteViewModel
     
-    @StateObject var categoryQuoteViewModel: CategoryQuoteViewModel
+    @StateObject var quoteViewModel: QuoteViewModel
     
     @Binding var category: Category
     
@@ -40,11 +40,11 @@ struct CategoryDetailView: View {
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
         .navigationTitle(category.name)
         .onAppear {
-            cateQuotes = categoryQuoteViewModel.filterQuotes(for: category)
+            cateQuotes = quoteViewModel.filterQuotes(for: category)
         }
     }
 }
 
 #Preview {
-    CategoryDetailView(categoryQuoteViewModel: CategoryQuoteViewModel(quotes: Quotes.list), category: .constant(Category.list[0]))
+    QuoteListView(quoteViewModel: QuoteViewModel(quotes: Quotes.list), category: .constant(Category.list[0]))
 }
