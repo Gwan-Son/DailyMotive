@@ -17,19 +17,32 @@ struct CategoryCell: View {
                 .fill(LinearGradient(gradient: Gradient(colors: [backgroundColor(for: category.id - 1), backgroundColor(for: category.id)]), startPoint: .bottomLeading, endPoint: .topTrailing))
                 .frame(maxWidth: .infinity, minHeight: 100)
             
-            Image(category.imageName(id: category.id))
+            //            if let image = category.imageName(id: category.id) {
+            //                image
+            //                    .resizable()
+            //                    .scaledToFill()
+            //                    .frame(height: 100)
+            //                    .opacity(0.3)
+            //                    .cornerRadius(20)
+            //            }
+            Image(String(category.id))
                 .resizable()
                 .scaledToFill()
                 .frame(height: 100)
                 .opacity(0.3)
                 .cornerRadius(20)
-            
             Text(category.name)
                 .font(.largeTitle)
                 .bold()
-//                .font(.system(size: 28, weight: .bold))
                 .foregroundColor(.white)
         }
+        //        Text(category.name)
+        //            .font(.title)
+        //            .bold()
+        //            .foregroundColor(.white)
+        //            .frame(maxWidth: .infinity, minHeight: 80)
+        //            .background(backgroundColor(for: category.id))
+        //            .cornerRadius(20)
     }
     
     func backgroundColor(for intValue: Int) -> Color {
@@ -39,27 +52,27 @@ struct CategoryCell: View {
         case 1:
             return .red
         case 2:
-            return .blue
-        case 3:
-            return .green
-        case 4:
-            return .yellow
-        case 5:
             return .orange
+        case 3:
+            return .yellow
+        case 4:
+            return .green
+        case 5:
+            return .blue
         case 6:
             return .purple
         case 7:
             return .pink
         case 8:
-            return .gray
-        case 9:
-            return .black
-        case 10:
             return .indigo
-        case 11:
+        case 9:
+            return .teal
+        case 10:
             return .cyan
+        case 11:
+            return .mint
         case 12:
-            return .brown
+            return .gray
         default:
             return .clear
         }

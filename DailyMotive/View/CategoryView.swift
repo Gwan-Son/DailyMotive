@@ -32,7 +32,6 @@ struct CategoryView: View {
                             } label: {
                                 CategoryCell(category: $cate)
                             }
-                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                         }
                     }
                 }
@@ -42,7 +41,7 @@ struct CategoryView: View {
                 
                 
             }
-            .navigationTitle("오늘의 명언")
+            .navigationTitle("카테고리")
             .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
         }
     }
