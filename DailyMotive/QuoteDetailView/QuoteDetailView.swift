@@ -10,12 +10,15 @@ import SwiftUI
 struct QuoteDetailView: View {
     
     @Binding var quote: Quotes
+    @EnvironmentObject var likesQuoteViewModel: LikesViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Spacer()
             
-            Image(systemName: "quote.closing")
+            Spacer()
+                .frame(height: 150)
+            
+            Image(systemName: "quote.opening")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 50, height: 50)
@@ -44,13 +47,26 @@ struct QuoteDetailView: View {
             
             HStack(alignment: .center, spacing: 20) {
                 Button {
-                    // Favorite
+                    // Likes
+                    if !likesQuoteViewModel.likesQuoteList.contains(quote) {
+                        likesQuoteViewModel.addQuote(with: quote)
+                    } else {
+                        // unlike
+                        likesQuoteViewModel.deleteQuote(with: quote)
+                    }
                 } label: {
-                    Image(systemName: "heart") // 사용자가 저장했다면 .fill
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 25)
-                        .foregroundColor(.gray)
+                    if !likesQuoteViewModel.likesQuoteList.contains(quote) {
+                        Image(systemName: "heart") // 사용자가 저장 안함
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.gray)
+                    } else {
+                        Image(systemName: "heart.fill") // 사용자가 저장함
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 30, height: 30)
+                    }
                 }
                 
                 Button {
@@ -70,10 +86,10 @@ struct QuoteDetailView: View {
             Spacer()
         }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
-
     }
 }
 
 #Preview {
     QuoteDetailView(quote: .constant(Quotes.list[0]))
+        .environmentObject(LikesViewModel())
 }

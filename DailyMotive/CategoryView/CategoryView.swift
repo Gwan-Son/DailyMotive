@@ -11,6 +11,7 @@ import Combine
 struct CategoryView: View {
     
     @EnvironmentObject var homeViewModel: HomeViewModel
+    @EnvironmentObject var likesViewModel: LikesViewModel
     
     
     let layout: [GridItem] = [
@@ -29,6 +30,7 @@ struct CategoryView: View {
                             NavigationLink {
                                 let vm = QuoteViewModel(quotes: homeViewModel.quotes)
                                 QuoteListView(quoteViewModel: vm,category: $cate)
+                                    .environmentObject(likesViewModel)
                             } label: {
                                 CategoryCell(category: $cate)
                             }
@@ -50,4 +52,5 @@ struct CategoryView: View {
 #Preview {
     CategoryView()
         .environmentObject(HomeViewModel())
+        .environmentObject(LikesViewModel())
 }

@@ -12,7 +12,7 @@ final class RandomQuoteViewModel: ObservableObject {
     @Published private(set) var quotes: [Quotes]
     
     // 현재 선택된 명언
-    @Published var currentQuote: Quotes?
+    @Published var currentQuote: Quotes = Quotes(author: "", quote: "", category: 0)
     
     init() {
         self.quotes = Quotes.list

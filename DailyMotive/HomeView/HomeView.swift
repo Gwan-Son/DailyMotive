@@ -29,6 +29,7 @@ struct HomeView: View {
                     .tag(Tab.home)
                 CategoryView()
                     .environmentObject(homeViewModel)
+                    .environmentObject(likesQuoteViewModel)
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                         Text("Search")

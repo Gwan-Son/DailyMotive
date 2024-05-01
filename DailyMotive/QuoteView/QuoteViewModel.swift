@@ -11,6 +11,10 @@ final class QuoteViewModel: ObservableObject {
     
     @Published private(set) var quotes: [Quotes]
     
+    @Published var isShowingDetailView = false
+    
+    @Published var selectedQuote: Quotes = Quotes(author: "", quote: "", category: 0)
+    
     init(quotes: [Quotes]) {
         self.quotes = quotes
     }
