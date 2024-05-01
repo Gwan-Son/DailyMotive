@@ -10,7 +10,6 @@ import SwiftUI
 struct RandomQuoteView: View {
     
     @EnvironmentObject var randomQuoteViewModel: RandomQuoteViewModel
-    @EnvironmentObject var likesQuoteViewModel: LikesViewModel
     
     var body: some View {
         VStack {
@@ -131,5 +130,4 @@ struct RandomQuoteView: View {
 #Preview {
     RandomQuoteView()
         .environmentObject(RandomQuoteViewModel())
-        .environmentObject(LikesViewModel())
 }

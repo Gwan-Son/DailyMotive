@@ -10,8 +10,6 @@ import Combine
 
 struct QuoteListView: View {
     
-    @EnvironmentObject var likesViewModel: LikesViewModel
-    
     @StateObject var quoteViewModel: QuoteViewModel
     
     @Binding var category: Category
@@ -31,8 +29,6 @@ struct QuoteListView: View {
                     } label: {
                         QuoteCell(quotes: $quote)
                     }
-
-
                 }
                 .padding(.bottom, 10)
             }
@@ -40,7 +36,6 @@ struct QuoteListView: View {
         .sheet(isPresented: $quoteViewModel.isShowingDetailView, content: {
             NavigationView {
                 QuoteDetailView(quote: $quoteViewModel.selectedQuote)
-                    .environmentObject(likesViewModel)
             }
         })
         .scrollIndicators(.hidden)
@@ -50,31 +45,8 @@ struct QuoteListView: View {
             cateQuotes = quoteViewModel.filterQuotes(for: category)
         }
     }
-//    var body: some View {
-//        ScrollView {
-//            LazyVGrid(columns: layout) {
-//                ForEach($cateQuotes) { $quote in
-//                    NavigationLink {
-//                        QuoteDetailView(quote: $quote)
-//                            .environmentObject(likesViewModel)
-//                    } label: {
-//                        QuoteCell(quotes: $quote)
-//                    }
-//
-//                }
-//                .padding(.bottom, 10)
-//            }
-//        }
-//        .scrollIndicators(.hidden)
-//        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
-//        .navigationTitle(category.name)
-//        .onAppear {
-//            cateQuotes = quoteViewModel.filterQuotes(for: category)
-//        }
-//    }
 }
 
 #Preview {
     QuoteListView(quoteViewModel: QuoteViewModel(quotes: Quotes.list), category: .constant(Category.list[0]))
-        .environmentObject(LikesViewModel())
 }

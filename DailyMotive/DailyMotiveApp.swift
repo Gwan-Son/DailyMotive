@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DailyMotiveApp: App {
+    
+    @StateObject var likeViewModel = LikesViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView().environmentObject(likeViewModel)
         }
     }
 }

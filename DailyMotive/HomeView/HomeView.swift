@@ -11,7 +11,7 @@ import Combine
 struct HomeView: View {
     
     @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
-    @StateObject var likesQuoteViewModel: LikesViewModel = LikesViewModel()
+    @EnvironmentObject var likesQuoteViewModel: LikesViewModel
     
     var body: some View {
         if homeViewModel.isLoading {
@@ -21,7 +21,6 @@ struct HomeView: View {
             TabView(selection: $homeViewModel.selectedTab) {
                 RandomQuoteView()
                     .environmentObject(homeViewModel.randomQuoteViewModel)
-                    .environmentObject(likesQuoteViewModel)
                     .tabItem {
                         Image(systemName: "quote.bubble")
                         Text("Quote")
@@ -29,7 +28,6 @@ struct HomeView: View {
                     .tag(Tab.home)
                 CategoryView()
                     .environmentObject(homeViewModel)
-                    .environmentObject(likesQuoteViewModel)
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                         Text("Search")
@@ -37,7 +35,6 @@ struct HomeView: View {
                     .tag(Tab.search)
                 // LikesView()
                 LikesView()
-                    .environmentObject(likesQuoteViewModel)
                     .tabItem {
                         Image(systemName: "heart")
                         Text("Likes")
@@ -58,5 +55,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .environmentObject(HomeViewModel())
+        .environmentObject(LikesViewModel())
 }
