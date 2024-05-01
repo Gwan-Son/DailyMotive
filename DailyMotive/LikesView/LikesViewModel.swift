@@ -14,5 +14,18 @@ final class LikesViewModel: ObservableObject {
     
     init() {
         self.likesQuoteList = likesQuoteManger.loadLikesQuote()
+        print(likesQuoteList)
+    }
+    
+    func addQuote(with quote: Quotes) {
+        likesQuoteList.append(quote)
+        likesQuoteManger.saveLikesQuote(likesQuoteList)
+        print(quote)
+    }
+    
+    func deleteQuote(with quote: Quotes) {
+        likesQuoteList.removeAll { $0 == quote}
+        likesQuoteManger.saveLikesQuote(likesQuoteList)
+        print(likesQuoteList)
     }
 }

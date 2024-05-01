@@ -21,6 +21,7 @@ struct HomeView: View {
             TabView(selection: $homeViewModel.selectedTab) {
                 RandomQuoteView()
                     .environmentObject(homeViewModel.randomQuoteViewModel)
+                    .environmentObject(likesQuoteViewModel)
                     .tabItem {
                         Image(systemName: "quote.bubble")
                         Text("Quote")

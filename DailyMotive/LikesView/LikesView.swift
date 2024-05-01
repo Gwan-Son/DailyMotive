@@ -16,12 +16,11 @@ struct LikesView: View {
             Spacer()
             ScrollView {
                 Text("Likes")
-                List {
-                    ForEach(likesQuoteViewModel.likesQuoteList) { quote in
-                        Text(quote.quote)
-                        Text(quote.author)
-                    }
+                ForEach(likesQuoteViewModel.likesQuoteList) { quote in
+                    Text("\(quote.quote)")
+                    Text("\(quote.author)")
                 }
+                
             }
         }
     }
