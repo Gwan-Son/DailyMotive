@@ -9,6 +9,8 @@ import SwiftUI
 
 struct LikesCell: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @Binding var quotes: Quotes
     
     var body: some View {
@@ -16,16 +18,17 @@ struct LikesCell: View {
             
             VStack(alignment: .center, spacing: 10) {
                 Text("\(quotes.quote)")
-                    .font(.title3)
-                    .bold()
-                    .lineLimit(2)
-                Text("\(quotes.author)")
                     .font(.caption)
+                    .bold()
+                    .lineLimit(3)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                Text("\(quotes.author)")
+                    .font(.caption2)
                     .foregroundColor(.gray)
             }
-            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+//            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
 //            .foregroundColor(.white)
-            .frame(maxWidth: .infinity, minHeight: 80)
+            .frame(maxWidth: .infinity, minHeight: 100)
             .background(.regularMaterial)
             .cornerRadius(10)
         }

@@ -127,7 +127,7 @@ struct RandomQuoteView: View {
     }
 }
 
-#Preview {
-    RandomQuoteView()
-        .environmentObject(RandomQuoteViewModel())
-}
+//#Preview {
+//    RandomQuoteView()
+//        .environmentObject(RandomQuoteViewModel())
+//}

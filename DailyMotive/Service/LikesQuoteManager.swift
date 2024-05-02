@@ -46,7 +46,6 @@ class LikesQuoteManager {
         do {
             let data = try Data(contentsOf: likesQuoteFileURL)
             let likesQuoteList = try JSONDecoder().decode([Quotes].self, from: data)
-            print("Loading Data: \(likesQuoteList)")
             return likesQuoteList
         } catch {
             print("Failed load LikesQuoteList: \(error.localizedDescription)")

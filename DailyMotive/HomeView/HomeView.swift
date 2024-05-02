@@ -23,29 +23,23 @@ struct HomeView: View {
                     .environmentObject(homeViewModel.randomQuoteViewModel)
                     .tabItem {
                         Image(systemName: "quote.bubble")
-                        Text("Quote")
                     }
                     .tag(Tab.home)
                 CategoryView()
                     .environmentObject(homeViewModel)
                     .tabItem {
-                        Image(systemName: "magnifyingglass")
-                        Text("Search")
+                        Image(systemName: "folder")
                     }
                     .tag(Tab.search)
-                // LikesView()
                 LikesView()
                     .tabItem {
                         Image(systemName: "heart")
-                        Text("Likes")
                     }
                     .tag(Tab.likes)
                 
-                // SettingView()
-                Text("Setting")
+                SettingView()
                     .tabItem {
                         Image(systemName: "gearshape")
-                        Text("Setting")
                     }
                     .tag(Tab.setting)
             }

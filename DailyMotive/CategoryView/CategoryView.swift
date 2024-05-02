@@ -42,7 +42,7 @@ struct CategoryView: View {
                 
             }
             .navigationTitle("카테고리")
-            .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
+            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         }
     }
 }

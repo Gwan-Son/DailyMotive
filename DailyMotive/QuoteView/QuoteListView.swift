@@ -17,6 +17,8 @@ struct QuoteListView: View {
     @State var cateQuotes: [Quotes] = []
     
     let layout: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
         GridItem(.flexible())
     ]
     var body: some View {
@@ -39,7 +41,7 @@ struct QuoteListView: View {
             }
         })
         .scrollIndicators(.hidden)
-        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 30))
+        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
         .navigationTitle(category.name)
         .onAppear {
             cateQuotes = quoteViewModel.filterQuotes(for: category)
