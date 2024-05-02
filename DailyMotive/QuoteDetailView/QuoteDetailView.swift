@@ -16,7 +16,7 @@ struct QuoteDetailView: View {
         VStack(alignment: .leading, spacing: 20) {
             
             Spacer()
-                .frame(height: 150)
+                .frame(height: 130)
             
             Image(systemName: "quote.opening")
                 .resizable()
@@ -44,6 +44,7 @@ struct QuoteDetailView: View {
                     .padding(.top, 5)
             }
             
+            Spacer()
             
             HStack(alignment: .center, spacing: 20) {
                 Button {
@@ -82,8 +83,6 @@ struct QuoteDetailView: View {
             .frame(maxWidth: .infinity)
             .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
             
-            
-            Spacer()
         }
         .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
     }

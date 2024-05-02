@@ -12,6 +12,10 @@ final class LikesViewModel: ObservableObject {
     
     @Published var likesQuoteList: [Quotes] = []
     
+    @Published var isShowingLikesView: Bool = false
+    
+    @Published var selectedQuote: Quotes = Quotes(author: "", quote: "", category: 0)
+    
     init() {
         self.likesQuoteList = likesQuoteManger.loadLikesQuote()
         print(likesQuoteList)
