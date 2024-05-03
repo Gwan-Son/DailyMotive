@@ -16,7 +16,6 @@ struct QuoteDetailView: View {
         VStack(alignment: .leading, spacing: 20) {
             
             Spacer()
-                .frame(height: 130)
             
             Image(systemName: "quote.opening")
                 .resizable()
@@ -27,7 +26,7 @@ struct QuoteDetailView: View {
             VStack(alignment: .leading, spacing: 10){
                 Text("\(quote.quote)")
                     .font(.callout)
-                    .bold()
+//                    .bold()
                     .minimumScaleFactor(0.5)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineLimit(nil)
@@ -60,13 +59,13 @@ struct QuoteDetailView: View {
                         Image(systemName: "heart") // 사용자가 저장 안함
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 25, height: 25)
                             .foregroundColor(.gray)
                     } else {
                         Image(systemName: "heart.fill") // 사용자가 저장함
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 25, height: 25)
                     }
                 }
                 
@@ -84,7 +83,7 @@ struct QuoteDetailView: View {
             .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))
             
         }
-        .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
+        .padding(EdgeInsets(top: 0, leading: 30, bottom: 10, trailing: 30))
     }
 }
 

@@ -18,6 +18,7 @@ struct HomeView: View {
             LoadingView()
         }
         else {
+            
             TabView(selection: $homeViewModel.selectedTab) {
                 RandomQuoteView()
                     .environmentObject(homeViewModel.randomQuoteViewModel)
@@ -43,6 +44,7 @@ struct HomeView: View {
                     }
                     .tag(Tab.setting)
             }
+            
         }
     }
 }

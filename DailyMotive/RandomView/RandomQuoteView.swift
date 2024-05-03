@@ -13,6 +13,8 @@ struct RandomQuoteView: View {
     
     var body: some View {
         VStack {
+                
+            
             QuoteDetailView(quote: $randomQuoteViewModel.currentQuote)
             
             Button(action: {

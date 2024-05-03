@@ -37,7 +37,7 @@ struct CategoryView: View {
                 }
                 .scrollIndicators(.hidden)
                 
-                Spacer()
+//                Spacer()
                 
                 
             }
