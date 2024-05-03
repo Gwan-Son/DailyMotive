@@ -11,6 +11,8 @@ struct RandomQuoteView: View {
     
     @EnvironmentObject var randomQuoteViewModel: RandomQuoteViewModel
     
+    private let customFont = FontManager.currentFont()
+    
     var body: some View {
         VStack {
                 
@@ -23,7 +25,7 @@ struct RandomQuoteView: View {
                 HStack {
                     Image(systemName: "arrow.triangle.2.circlepath")
                     Text("다른 명언 보기")
-                        .font(.system(size: 20, weight: .bold))
+                        .font(customFont.buttonFont)
                 }
                 .frame(maxWidth: .infinity, minHeight: 50)
                 .background(.pink)

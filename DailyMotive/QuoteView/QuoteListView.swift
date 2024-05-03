@@ -10,11 +10,28 @@ import Combine
 
 struct QuoteListView: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @StateObject var quoteViewModel: QuoteViewModel
     
     @Binding var category: Category
     
     @State var cateQuotes: [Quotes] = []
+    
+    private let customFont = FontManager.currentFont()
+    
+    var backButton: some View {
+        Button {
+            self.presentationMode.wrappedValue.dismiss()
+        } label: {
+            HStack {
+                Image(systemName: "chevron.left")
+                    .aspectRatio(contentMode: .fit)
+                Text("뒤로가기")
+                    .font(customFont.buttonFont)
+            }
+        }
+    }
     
     let layout: [GridItem] = [
         GridItem(.flexible()),
@@ -43,6 +60,8 @@ struct QuoteListView: View {
         .scrollIndicators(.hidden)
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
         .navigationTitle(category.name)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton)
         .onAppear {
             cateQuotes = quoteViewModel.filterQuotes(for: category)
         }

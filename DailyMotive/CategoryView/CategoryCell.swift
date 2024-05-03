@@ -11,6 +11,8 @@ struct CategoryCell: View {
     
     @Binding var category: Category
     
+    private let customFont = FontManager.currentFont()
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
@@ -24,7 +26,7 @@ struct CategoryCell: View {
                 .opacity(0.3)
                 .cornerRadius(20)
             Text(category.name)
-                .font(.largeTitle)
+                .font(customFont.categoryCellFont)
                 .bold()
                 .foregroundColor(.white)
         }

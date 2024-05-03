@@ -12,6 +12,11 @@ struct CategoryView: View {
     
     @EnvironmentObject var homeViewModel: HomeViewModel
     
+    private let customFont = FontManager.currentFont()
+    
+    init() {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : customFont.categoryFont]
+    }
     
     let layout: [GridItem] = [
         GridItem(.flexible()),

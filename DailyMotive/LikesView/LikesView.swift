@@ -11,6 +11,8 @@ struct LikesView: View {
     
     @EnvironmentObject var likesQuoteViewModel: LikesViewModel
     
+    private let customFont = FontManager.currentFont()
+    
     let layout: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -22,7 +24,7 @@ struct LikesView: View {
             
             
             Text("저장된 명언")
-                .font(.title)
+                .font(customFont.categoryCellFont)
                 .bold()
                 .padding(EdgeInsets(top: 40, leading: 20, bottom: 0, trailing: 0))
                 
@@ -32,7 +34,7 @@ struct LikesView: View {
             
             if likesQuoteViewModel.likesQuoteList.isEmpty {
                 Text("저장된 명언이 없습니다.")
-                    .font(.callout)
+                    .font(customFont.quoteFont)
                     .frame(maxWidth: .infinity)
                 Spacer()
             }

@@ -13,17 +13,19 @@ struct QuoteCell: View {
     
     @Environment(\.colorScheme) var colorScheme
     
+    private let customFont = FontManager.currentFont()
+    
     var body: some View {
         ZStack {
             
             VStack(alignment: .center, spacing: 10) {
                 Text("\(quotes.quote)")
-                    .font(.caption)
+                    .font(customFont.cellFont)
                     .bold()
                     .lineLimit(3)
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 Text("\(quotes.author)")
-                    .font(.caption2)
+                    .font(customFont.cellFont)
                     .foregroundColor(.gray)
             }
 //            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))

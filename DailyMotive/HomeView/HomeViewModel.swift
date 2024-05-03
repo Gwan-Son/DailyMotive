@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 final class HomeViewModel: ObservableObject {
     
@@ -61,5 +62,11 @@ final class HomeViewModel: ObservableObject {
                 self?.isLoading = false // 데이터 로딩 완료
             })
             .store(in: &subscriptions)
+        
+        for fontFamily in UIFont.familyNames {
+            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+                print(fontName)
+            }
+        }
     }
 }
