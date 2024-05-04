@@ -12,12 +12,9 @@ struct FontView: View {
     
     @Binding var customFont: Fonts
     
-    let name = ["애플기본", "런드리고딕", "영주선비체", "강원교육모두Light", "산하엽", "부크크명조 얇은글씨", "온글잎 매일옥자체"]
-    let data = ["AppleSDGothicNeo-Regular", "OTLaundryGothicR", "YEONGJUSeonbi", "GangwonEduAll-OTFLight", "Diphylleia-Regular", "BookkMyungjo-Lt", "Ownglyph_Dailyokja-Rg"]
-    let value: [Fonts] = [.apple, .laundry, .sunbi, .gwonAll, .diphy, .bkkLT, .dailyOJ]
-    
-    
-    @State private var selectedFont = "OTLaundryGothicR"
+    let name = ["애플기본", "런드리고딕", "영주선비체", "강원교육모두Light", "산하엽", "부크크명조 얇은글씨", "온글잎 매일옥자체", "다이어리체"]
+    let data = ["AppleSDGothicNeo-Regular", "OTLaundryGothicR", "YEONGJUSeonbi", "GangwonEduAll-OTFLight", "Diphylleia-Regular", "BookkMyungjo-Lt", "Ownglyph_Dailyokja-Rg", "EF_Diary"]
+    let value: [Fonts] = [.apple, .laundry, .sunbi, .gwonAll, .diphy, .bkkLT, .dailyOJ, .efDiary]
     
     var backButton: some View {
         Button {
@@ -36,14 +33,28 @@ struct FontView: View {
         NavigationView {
             // Font 미리보기 View
             List {
-                Section(header: Text("폰트")) {
+                Section(header: Text("미리보기").font(customFont.authorFont)) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("강렬한 사랑은 판단하지 않는다. 주기만 할 뿐이다.")
+                            .font(customFont.quoteFont)
+                            .padding(.top, 10)
+                        Spacer()
+                        Rectangle()
+                            .frame(width: 70, height: 1)
+                            .foregroundColor(.gray)
+                        Text("마더 테레사")
+                            .font(customFont.authorFont)
+                            .padding(.bottom, 10)
+                    }
+                }
+                
+                
+                Section(header: Text("폰트").font(customFont.authorFont)) {
                     ForEach(Array(name.enumerated()), id: \.element) {index, fontName in
                         ZStack(alignment: .leading) {
                             Button {
                                 customFont = value[index]
-                                print("선택된 폰트: \(fontName)")
-                                selectedFont = fontName
-                                //viewModel에서 FontManager.applyFont
+                                //TODO: - viewModel에서 FontManager.applyFont
                                 FontManager.applyFont(font: customFont)
                             } label: {
                                 
@@ -61,7 +72,6 @@ struct FontView: View {
                     }
                 }
             }
-            // Font 리스트
             .background(.bar)
             .scrollContentBackground(.hidden)
         }

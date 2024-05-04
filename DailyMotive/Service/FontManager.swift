@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 enum Fonts: Int {
-    case apple, laundry, sunbi, gwonAll, diphy, bkkLT, dailyOJ
+    case apple, laundry, sunbi, gwonAll, diphy, bkkLT, dailyOJ, efDiary
     
     var quoteFont: Font {
         switch self {
@@ -27,6 +27,8 @@ enum Fonts: Int {
             return .custom("BookkMyungjo-Lt", size: 18)
         case .dailyOJ:
             return .custom("Ownglyph_Dailyokja-Rg", size: 18)
+        case .efDiary:
+            return .custom("EF_Diary", size: 18)
         }
     }
     
@@ -46,6 +48,8 @@ enum Fonts: Int {
             return .custom("BookkMyungjo-Lt", size: 14)
         case .dailyOJ:
             return .custom("Ownglyph_Dailyokja-Rg", size: 14)
+        case .efDiary:
+            return .custom("EF_Diary", size: 14)
         }
     }
     
@@ -65,6 +69,8 @@ enum Fonts: Int {
             return .custom("BookkMyungjo-Lt", size: 10)
         case .dailyOJ:
             return .custom("Ownglyph_Dailyokja-Rg", size: 10)
+        case .efDiary:
+            return .custom("EF_Diary", size: 10)
         }
     }
     
@@ -84,6 +90,8 @@ enum Fonts: Int {
             return .custom("BookkMyungjo-Lt", size: 20)
         case .dailyOJ:
             return .custom("Ownglyph_Dailyokja-Rg", size: 20)
+        case .efDiary:
+            return .custom("EF_Diary", size: 20)
         }
     }
     
@@ -103,6 +111,8 @@ enum Fonts: Int {
             return .custom("BookkMyungjo-Lt", size: 28)
         case .dailyOJ:
             return .custom("Ownglyph_Dailyokja-Rg", size: 28)
+        case .efDiary:
+            return .custom("EF_Diary", size: 28)
         }
     }
     
@@ -122,6 +132,8 @@ enum Fonts: Int {
             return UIFont(name: "BookkMyungjo-Lt", size: 28)!
         case .dailyOJ:
             return UIFont(name: "Ownglyph_Dailyokja-Rg", size: 28)!
+        case .efDiary:
+            return UIFont(name: "EF_Diary", size: 28)!
         }
     }
     

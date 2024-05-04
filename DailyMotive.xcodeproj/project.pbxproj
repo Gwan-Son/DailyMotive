@@ -15,6 +15,7 @@
 		9F10B71D2BE6DD23009E786A /* Diphylleia-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B71C2BE6DD23009E786A /* Diphylleia-Regular.ttf */; };
 		9F10B71F2BE6DE7F009E786A /* 부크크명조_얇은글씨.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B71E2BE6DE7F009E786A /* 부크크명조_얇은글씨.ttf */; };
 		9F10B7212BE6E00D009E786A /* 온글잎 매일옥자체.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B7202BE6E00D009E786A /* 온글잎 매일옥자체.ttf */; };
+		9F10B7232BE6E11D009E786A /* EF_Diary.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B7222BE6E11D009E786A /* EF_Diary.ttf */; };
 		9F2B6FE12BE37EC000D65709 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B6FE02BE37EC000D65709 /* SettingView.swift */; };
 		9F44E90C2BDB7DD500F942AA /* QuoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44E90B2BDB7DD500F942AA /* QuoteCell.swift */; };
 		9F44E90E2BDB8C6E00F942AA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44E90D2BDB8C6E00F942AA /* LoadingView.swift */; };
@@ -73,6 +74,7 @@
 		9F10B71C2BE6DD23009E786A /* Diphylleia-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Diphylleia-Regular.ttf"; sourceTree = "<group>"; };
 		9F10B71E2BE6DE7F009E786A /* 부크크명조_얇은글씨.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "부크크명조_얇은글씨.ttf"; sourceTree = "<group>"; };
 		9F10B7202BE6E00D009E786A /* 온글잎 매일옥자체.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "온글잎 매일옥자체.ttf"; sourceTree = "<group>"; };
+		9F10B7222BE6E11D009E786A /* EF_Diary.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EF_Diary.ttf; sourceTree = "<group>"; };
 		9F2B6FE02BE37EC000D65709 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		9F44E90B2BDB7DD500F942AA /* QuoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCell.swift; sourceTree = "<group>"; };
 		9F44E90D2BDB8C6E00F942AA /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				9F10B71C2BE6DD23009E786A /* Diphylleia-Regular.ttf */,
 				9F10B71E2BE6DE7F009E786A /* 부크크명조_얇은글씨.ttf */,
 				9F10B7202BE6E00D009E786A /* 온글잎 매일옥자체.ttf */,
+				9F10B7222BE6E11D009E786A /* EF_Diary.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F10B7152BE53527009E786A /* OTLaundryGothicR.otf in Resources */,
+				9F10B7232BE6E11D009E786A /* EF_Diary.ttf in Resources */,
 				9F10B71F2BE6DE7F009E786A /* 부크크명조_얇은글씨.ttf in Resources */,
 				9F10B7192BE6C7D7009E786A /* YEONGJUSeonbi.otf in Resources */,
 				9FEF3BBF2BD6338C001A60D0 /* Preview Assets.xcassets in Resources */,
