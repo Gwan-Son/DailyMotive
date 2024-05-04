@@ -5,7 +5,11 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>OTLaundryGothicR.otf</string>
-		<string></string>
+		<string>YEONGJUSeonbi.otf</string>
+		<string>강원교육모두.otf</string>
+		<string>Diphylleia-Regular.ttf</string>
+		<string>부크크명조_얇은글씨.ttf</string>
+		<string>온글잎 매일옥자체.ttf</string>
 	</array>
 </dict>
 </plist>

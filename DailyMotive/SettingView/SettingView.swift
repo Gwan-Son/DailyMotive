@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SettingView: View {
     
-    private let customFont = FontManager.currentFont()
+    @State private var customFont = FontManager.currentFont()
     
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : customFont.categoryFont]
-    }
+//    init() {
+//        UINavigationBar.appearance().largeTitleTextAttributes = [.font : customFont.categoryFont]
+//    }
     
     var body: some View {
         NavigationView {
@@ -22,7 +22,7 @@ struct SettingView: View {
                     Text("알림 설정")
                     Text("테마 변경")
                     NavigationLink {
-                        FontView()
+                        FontView(customFont: $customFont)
                     } label: {
                         Text("글씨체 변경")
                     }
@@ -45,7 +45,7 @@ struct SettingView: View {
             .background(.bar)
             .scrollContentBackground(.hidden)
             .font(customFont.authorFont)
-            .navigationTitle("설정")
+//            .navigationTitle("설정")
         }
         
     }

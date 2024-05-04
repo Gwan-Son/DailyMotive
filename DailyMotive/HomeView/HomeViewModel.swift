@@ -64,8 +64,9 @@ final class HomeViewModel: ObservableObject {
             .store(in: &subscriptions)
         
         for fontFamily in UIFont.familyNames {
+            print(fontFamily)
             for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
-                print(fontName)
+                print("== \(fontName)")
             }
         }
     }
