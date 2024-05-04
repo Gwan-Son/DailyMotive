@@ -34,8 +34,6 @@ struct QuoteListView: View {
     }
     
     let layout: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
         GridItem(.flexible())
     ]
     var body: some View {
@@ -48,9 +46,10 @@ struct QuoteListView: View {
                     } label: {
                         QuoteCell(quotes: $quote)
                     }
+                    .padding(.bottom, 3)
                 }
-                .padding(.bottom, 10)
             }
+            .padding(.top, 10)
         }
         .sheet(isPresented: $quoteViewModel.isShowingDetailView, content: {
             NavigationView {

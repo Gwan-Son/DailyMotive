@@ -14,8 +14,6 @@ struct LikesView: View {
     private let customFont = FontManager.currentFont()
     
     let layout: [GridItem] = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
@@ -50,9 +48,10 @@ struct LikesView: View {
                                 LikesCell(quotes: $quote)
                             }
                         }
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 3)
                     })
                 }
+                .padding(.top, 10)
                 .sheet(isPresented: $likesQuoteViewModel.isShowingLikesView, content: {
                     NavigationView {
                         QuoteDetailView(quote: $likesQuoteViewModel.selectedQuote)

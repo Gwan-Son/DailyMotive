@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9F10B70F2BE530D3009E786A /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10B70E2BE530D3009E786A /* FontManager.swift */; };
 		9F10B7152BE53527009E786A /* OTLaundryGothicR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B7142BE53527009E786A /* OTLaundryGothicR.otf */; };
+		9F10B7172BE545CA009E786A /* FontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10B7162BE545CA009E786A /* FontView.swift */; };
 		9F2B6FE12BE37EC000D65709 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F2B6FE02BE37EC000D65709 /* SettingView.swift */; };
 		9F44E90C2BDB7DD500F942AA /* QuoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44E90B2BDB7DD500F942AA /* QuoteCell.swift */; };
 		9F44E90E2BDB8C6E00F942AA /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F44E90D2BDB8C6E00F942AA /* LoadingView.swift */; };
@@ -61,6 +62,7 @@
 		9F10B70E2BE530D3009E786A /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		9F10B7132BE532D7009E786A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F10B7142BE53527009E786A /* OTLaundryGothicR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OTLaundryGothicR.otf; sourceTree = "<group>"; };
+		9F10B7162BE545CA009E786A /* FontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontView.swift; sourceTree = "<group>"; };
 		9F2B6FE02BE37EC000D65709 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		9F44E90B2BDB7DD500F942AA /* QuoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteCell.swift; sourceTree = "<group>"; };
 		9F44E90D2BDB8C6E00F942AA /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				9F2B6FE02BE37EC000D65709 /* SettingView.swift */,
+				9F10B7162BE545CA009E786A /* FontView.swift */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FE19CC22BE109A3009ABB72 /* LikesQuoteManager.swift in Sources */,
+				9F10B7172BE545CA009E786A /* FontView.swift in Sources */,
 				9FA292942BD8EFB5001889E2 /* RandomQuoteViewModel.swift in Sources */,
 				9FEF3BE22BD633C1001A60D0 /* HomeView.swift in Sources */,
 				9FA2928E2BD8EC10001889E2 /* CategoryView.swift in Sources */,
@@ -549,7 +553,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -606,7 +610,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
