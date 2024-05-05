@@ -58,9 +58,16 @@ struct QuoteListView: View {
         })
         .scrollIndicators(.hidden)
         .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-        .navigationTitle(category.name)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(category.name)
+                    .font(customFont.buttonFont)
+                    .accessibilityAddTraits(.isHeader)
+            }
+        }
         .onAppear {
             cateQuotes = quoteViewModel.filterQuotes(for: category)
         }

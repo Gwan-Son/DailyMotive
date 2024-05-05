@@ -18,47 +18,48 @@ struct LikesView: View {
     ]
     
     var body: some View {
-        VStack(alignment: .leading) {
-            
-            
-            Text("저장된 명언")
-                .font(customFont.categoryCellFont)
-                .bold()
-                .padding(EdgeInsets(top: 40, leading: 20, bottom: 0, trailing: 0))
+        NavigationView {
+            VStack(alignment: .leading) {
                 
-            
-            
-            Spacer()
-            
-            if likesQuoteViewModel.likesQuoteList.isEmpty {
-                Text("저장된 명언이 없습니다.")
-                    .font(customFont.quoteFont)
-                    .frame(maxWidth: .infinity)
-                Spacer()
-            }
-            else {
-                ScrollView {
-                    
-                    LazyVGrid(columns: layout, content: {
-                        ForEach($likesQuoteViewModel.likesQuoteList) { $quote in
-                            Button {
-                                likesQuoteViewModel.selectedQuote = quote
-                                likesQuoteViewModel.isShowingLikesView = true
-                            } label: {
-                                LikesCell(quotes: $quote)
-                            }
-                        }
-                        .padding(.bottom, 3)
-                    })
+                if likesQuoteViewModel.likesQuoteList.isEmpty {
+                    Spacer()
+                    Text("저장된 명언이 없습니다.")
+                        .font(customFont.quoteFont)
+                        .frame(maxWidth: .infinity)
+                    Spacer()
                 }
-                .padding(.top, 10)
-                .sheet(isPresented: $likesQuoteViewModel.isShowingLikesView, content: {
-                    NavigationView {
-                        QuoteDetailView(quote: $likesQuoteViewModel.selectedQuote)
+                else {
+                    ScrollView {
+                        
+                        LazyVGrid(columns: layout, content: {
+                            ForEach($likesQuoteViewModel.likesQuoteList) { $quote in
+                                Button {
+                                    likesQuoteViewModel.selectedQuote = quote
+                                    likesQuoteViewModel.isShowingLikesView = true
+                                } label: {
+                                    LikesCell(quotes: $quote)
+                                }
+                            }
+                            .padding(.bottom, 3)
+                        })
                     }
-                })
-                .scrollIndicators(.hidden)
-            .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    .padding(.top, 10)
+                    .sheet(isPresented: $likesQuoteViewModel.isShowingLikesView, content: {
+                        NavigationView {
+                            QuoteDetailView(quote: $likesQuoteViewModel.selectedQuote)
+                        }
+                    })
+                    .scrollIndicators(.hidden)
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("저장된 명언")
+                        .font(customFont.buttonFont)
+                        .accessibilityAddTraits(.isHeader)
+                }
             }
         }
     }

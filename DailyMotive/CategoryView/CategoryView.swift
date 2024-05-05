@@ -14,10 +14,6 @@ struct CategoryView: View {
     
     private let customFont = FontManager.currentFont()
     
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : customFont.categoryFont]
-    }
-    
     let layout: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -42,11 +38,15 @@ struct CategoryView: View {
                 }
                 .scrollIndicators(.hidden)
                 
-//                Spacer()
-                
-                
             }
-            .navigationTitle("카테고리")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("카테고리")
+                        .font(customFont.buttonFont)
+                        .accessibilityAddTraits(.isHeader)
+                }
+            }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         }
     }
