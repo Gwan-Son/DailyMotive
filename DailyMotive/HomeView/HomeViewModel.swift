@@ -63,11 +63,12 @@ final class HomeViewModel: ObservableObject {
             })
             .store(in: &subscriptions)
         
-        for fontFamily in UIFont.familyNames {
-            print(fontFamily)
-            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
-                print("== \(fontName)")
-            }
-        }
+//        폰트 확인용 코드
+//        for fontFamily in UIFont.familyNames {
+//            print(fontFamily)
+//            for fontName in UIFont.fontNames(forFamilyName: fontFamily) {
+//                print("== \(fontName)")
+//            }
+//        }
     }
 }

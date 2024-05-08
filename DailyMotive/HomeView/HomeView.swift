@@ -38,12 +38,13 @@ struct HomeView: View {
                     }
                     .tag(Tab.likes)
                 
-                SettingView()
+                SettingView(homeViewModel: homeViewModel)
                     .tabItem {
                         Image(systemName: "gearshape")
                     }
                     .tag(Tab.setting)
             }
+            .accentColor(.pink)
             
         }
     }

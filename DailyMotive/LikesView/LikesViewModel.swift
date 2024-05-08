@@ -31,4 +31,9 @@ final class LikesViewModel: ObservableObject {
         likesQuoteManger.saveLikesQuote(likesQuoteList)
         print(likesQuoteList)
     }
+    
+    func resetQuote() {
+        likesQuoteList.removeAll()
+        likesQuoteManger.saveLikesQuote(likesQuoteList)
+    }
 }
