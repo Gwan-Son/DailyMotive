@@ -34,7 +34,11 @@ struct SettingView: View {
                 }
                 
                 Section("지원") {
-                    Text("공지사항")
+                    NavigationLink {
+                        NoticeView()
+                    } label: {
+                        Text("공지사항")
+                    }
                     
                     if MFMailComposeViewController.canSendMail() {
                         ZStack(alignment: .leading) {
@@ -66,14 +70,25 @@ struct SettingView: View {
                                     
                                 )
                             }
-                            Text("문의하기")
+                            HStack {
+                                Text("문의하기")
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(.gray)
+                            }
+                            
                         }
+                    }
+                    HStack {
+                        Text("앱버전")
+                        Spacer()
+                        Text(AppVersion.getAppVersion())
+                            .foregroundColor(.gray)
                     }
                 }
                 
-                
                 Section("사용자") {
-                    
                     Button {
                         isShowingResetAlert = true
                     } label: {
@@ -90,10 +105,7 @@ struct SettingView: View {
                                 homeViewModel.selectedTab = .home
                             }))
                     }
-                    
-                    
                 }
-                
             }
             .background(.bar)
             .scrollContentBackground(.hidden)
@@ -103,6 +115,7 @@ struct SettingView: View {
     }
 }
 
+// 메일 UIKit + SwiftUI
 extension SettingView {
     /// Delegate for view controller as `MFMailComposeViewControllerDelegate`
     private class MailDelegate: NSObject, MFMailComposeViewControllerDelegate {
