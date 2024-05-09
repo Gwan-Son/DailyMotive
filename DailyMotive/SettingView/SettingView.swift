@@ -12,8 +12,10 @@ struct SettingView: View {
     
     @State private var customFont = FontManager.currentFont()
     @State private var isShowingResetAlert = false // 초기화 Alert
-    @State private var isSendingMail = false // 문의하기 메일 Alert
     @State private var isCantSendingMail = false // 메일 설정 Alert
+    
+    private let mailComposeDelegate = MailDelegate()
+    
     @StateObject var settingViewModel = SettingViewModel()
     @EnvironmentObject var likesViewModel: LikesViewModel
     @ObservedObject var homeViewModel: HomeViewModel
@@ -23,7 +25,7 @@ struct SettingView: View {
             List {
                 Section("설정") {
                     Text("알림 설정")
-//                    Text("테마 변경")
+                    //                    Text("테마 변경")
                     NavigationLink {
                         FontView(settingViewModel: settingViewModel, customFont: $customFont)
                     } label: {
@@ -35,34 +37,39 @@ struct SettingView: View {
                     Text("공지사항")
                     
                     if MFMailComposeViewController.canSendMail() {
-                        NavigationLink {
-                            
-                        } label: {
+                        ZStack(alignment: .leading) {
+                            Button {
+                                self.presentMailCompose()
+                            } label: {
+                                
+                            }
                             Text("문의하기")
-//                            isSendingMail = true
                         }
-
                     } else {
                         ZStack(alignment: .leading) {
-                            NavigationLink{
-                                
-                            } label: {
-                                
-                            }
                             Button {
-                                
-//                                isCantSendingMail = true
+                                // cantSendMail
+                                isCantSendingMail.toggle()
                             } label: {
-                                Text("문의하기")
-                                    .foregroundColor(.black)
+                                
                             }
+                            .alert(isPresented: $isCantSendingMail) {
+                                Alert(
+                                    title: Text("메일 활성화"),
+                                    message: Text("Mail 앱에서 사용자의 Email을 설정해주세요."),
+                                    dismissButton: .default(Text("확인"), action: {
+                                        guard let mailSettingURL = URL(string: UIApplication.openSettingsURLString + "&path=MAIL") else { return }
+                                        if UIApplication.shared.canOpenURL(mailSettingURL) {
+                                            UIApplication.shared.open(mailSettingURL, options: [:], completionHandler: nil)
+                                        }
+                                    })
+                                    
+                                )
+                            }
+                            Text("문의하기")
                         }
-                        
                     }
                 }
-                .sheet(isPresented: $isSendingMail, content: {
-                    MailView()
-                })
                 
                 
                 Section("사용자") {
@@ -88,24 +95,57 @@ struct SettingView: View {
                 }
                 
             }
-            .alert(isPresented: $isCantSendingMail) {
-                Alert(
-                    title: Text("메일 활성화"),
-                    message: Text("Mail 앱에서 사용자의 Email을 설정해주세요."),
-                    dismissButton: .default(Text("확인"), action: {
-                        guard let mailSettingURL = URL(string: UIApplication.openSettingsURLString + "&path=MAIL") else { return }
-                        if UIApplication.shared.canOpenURL(mailSettingURL) {
-                            UIApplication.shared.open(mailSettingURL, options: [:], completionHandler: nil)
-                        }
-                    })
-                    
-                )
-            }
             .background(.bar)
             .scrollContentBackground(.hidden)
             .font(customFont.authorFont)
         }
         
+    }
+}
+
+extension SettingView {
+    /// Delegate for view controller as `MFMailComposeViewControllerDelegate`
+    private class MailDelegate: NSObject, MFMailComposeViewControllerDelegate {
+        
+        func mailComposeController(_ controller: MFMailComposeViewController,
+                                   didFinishWith result: MFMailComposeResult,
+                                   error: Error?) {
+            // DEBUG
+            //               switch result {
+            //               case .sent:
+            //                   print("메일 보내기 성공")
+            //               case .cancelled:
+            //                   print("메일 보내기 취소")
+            //               case .saved:
+            //                   print("메일 임시 저장")
+            //               case .failed:
+            //                   print("메일 발송 실패")
+            //               @unknown default: break
+            //               }
+            
+            
+            controller.dismiss(animated: true)
+        }
+        
+    }
+    
+    /// Present an mail compose view controller modally in UIKit environment
+    private func presentMailCompose() {
+        guard MFMailComposeViewController.canSendMail() else {
+            return
+        }
+        let vc = UIApplication.shared.keyWindow?.rootViewController
+        
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = mailComposeDelegate
+        
+        let bodyString = "이곳에 내용을 작성해 주세요."
+        
+        composeVC.setToRecipients(["id1593572580@gmail.com"])
+        composeVC.setSubject("문의 사항")
+        composeVC.setMessageBody(bodyString, isHTML: false)
+        
+        vc?.present(composeVC, animated: true)
     }
 }
 
