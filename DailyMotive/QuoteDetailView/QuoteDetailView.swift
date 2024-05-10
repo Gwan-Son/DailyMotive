@@ -12,6 +12,8 @@ struct QuoteDetailView: View {
     @Binding var quote: Quotes
     @EnvironmentObject var likesQuoteViewModel: LikesViewModel
     
+    
+    
     private let customFont = FontManager.currentFont()
     
     var body: some View {
@@ -28,7 +30,6 @@ struct QuoteDetailView: View {
             VStack(alignment: .leading, spacing: 10){
                 Text("\(quote.quote)")
                     .font(customFont.quoteFont)
-//                    .bold()
                     .minimumScaleFactor(0.5)
                     .fixedSize(horizontal: false, vertical: true)
                     .lineLimit(nil)
@@ -40,7 +41,6 @@ struct QuoteDetailView: View {
                     .padding(.top, 40)
                 
                 Text("\(quote.author)")
-//                    .font(.subheadline)
                     .font(customFont.authorFont)
                     .foregroundColor(.gray)
                     .padding(.top, 5)
@@ -71,7 +71,7 @@ struct QuoteDetailView: View {
                             .frame(width: 25, height: 25)
                     }
                 }
-                
+                    
                 Button {
                     // Share
                 } label: {
