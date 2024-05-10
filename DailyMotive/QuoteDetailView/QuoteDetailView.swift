@@ -12,7 +12,7 @@ struct QuoteDetailView: View {
     @Binding var quote: Quotes
     @EnvironmentObject var likesQuoteViewModel: LikesViewModel
     
-    
+    @State var quoteDetailViewModel = QuoteDetailViewModel()
     
     private let customFont = FontManager.currentFont()
     
@@ -74,6 +74,7 @@ struct QuoteDetailView: View {
                     
                 Button {
                     // Share
+                    quoteDetailViewModel.shareQuote(quote.quote, quote.author)
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                         .resizable()
