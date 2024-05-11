@@ -16,6 +16,9 @@ struct QuoteDetailView: View {
     
     private let customFont = FontManager.currentFont()
     
+    // DEBUG
+    private let url = URL(string: "https://github.com")!
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             
@@ -69,9 +72,14 @@ struct QuoteDetailView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(width: 25, height: 25)
+                            .foregroundColor(.red)
                     }
                 }
                     
+                // 텍스트 공유 기능
+                ShareLink(item: String(quote.quote + "-" + quote.author + "-"))
+                
+                
                 Button {
                     // Share
                     quoteDetailViewModel.shareQuote(quote.quote, quote.author)

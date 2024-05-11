@@ -47,7 +47,13 @@ struct SettingView: View {
                             } label: {
                                 
                             }
-                            Text("문의하기")
+                            HStack {
+                                Text("문의하기")
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(.gray)
+                            }
                         }
                     } else {
                         ZStack(alignment: .leading) {
