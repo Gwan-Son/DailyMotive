@@ -77,7 +77,11 @@ struct QuoteDetailView: View {
                 }
                     
                 // 텍스트 공유 기능
-                ShareLink(item: String(quote.quote + "-" + quote.author + "-"))
+//                ShareLink(item: String(quote.quote + "\n-" + quote.author + "-")) {
+//                    Label("", systemImage: "square.and.arrow.up")
+//                }
+                
+//                ShareLink("export Sceenshot",  item: quoteDetailViewModel.generateImage(quote: quote.quote, author: quote.author))
                 
                 
                 Button {
