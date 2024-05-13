@@ -12,48 +12,74 @@ struct QuoteDetailView: View {
     @Binding var quote: Quotes
     @EnvironmentObject var likesQuoteViewModel: LikesViewModel
     
-    @State var quoteDetailViewModel = QuoteDetailViewModel()
-    
     private let customFont = FontManager.currentFont()
     
+    func renderImage() -> UIImage {
+        let renderer = ImageRenderer(content: quoteView.frame(width: 500, height: 400))
+        renderer.scale = 2.0
+        return renderer.uiImage ?? UIImage()
+    }
     
-    
-    // DEBUG
-    private let url = URL(string: "https://github.com")!
+    var quoteView: some View {
+        VStack(alignment: .leading, spacing: 10){
+            Image(systemName: "quote.opening")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 50, height: 50)
+                .foregroundColor(.gray)
+            Text("\(quote.quote)")
+                .font(customFont.quoteFont)
+                .minimumScaleFactor(0.5)
+                .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(nil)
+                .lineSpacing(12.0)
+            
+            Rectangle()
+                .frame(width: 70, height: 1)
+                .foregroundColor(.gray)
+                .padding(.top, 40)
+            
+            Text("\(quote.author)")
+                .font(customFont.authorFont)
+                .foregroundColor(.gray)
+                .padding(.top, 5)
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             
             Spacer()
             
-            Image(systemName: "quote.opening")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50)
-                .foregroundColor(.gray)
+//            VStack(alignment: .leading, spacing: 10){
+//                Image(systemName: "quote.opening")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 50, height: 50)
+//                    .foregroundColor(.gray)
+//                Text("\(quote.quote)")
+//                    .font(customFont.quoteFont)
+//                    .minimumScaleFactor(0.5)
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .lineLimit(nil)
+//                    .lineSpacing(12.0)
+//                
+//                Rectangle()
+//                    .frame(width: 70, height: 1)
+//                    .foregroundColor(.gray)
+//                    .padding(.top, 40)
+//                
+//                Text("\(quote.author)")
+//                    .font(customFont.authorFont)
+//                    .foregroundColor(.gray)
+//                    .padding(.top, 5)
+//            }
             
-            VStack(alignment: .leading, spacing: 10){
-                Text("\(quote.quote)")
-                    .font(customFont.quoteFont)
-                    .minimumScaleFactor(0.5)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .lineLimit(nil)
-                    .lineSpacing(12.0)
-                
-                Rectangle()
-                    .frame(width: 70, height: 1)
-                    .foregroundColor(.gray)
-                    .padding(.top, 40)
-                
-                Text("\(quote.author)")
-                    .font(customFont.authorFont)
-                    .foregroundColor(.gray)
-                    .padding(.top, 5)
-            }
+            quoteView
             
             Spacer()
             
-            HStack(alignment: .center, spacing: 20) {
+            HStack(alignment: .bottom, spacing: 20) {
                 Button {
                     // Likes
                     if !likesQuoteViewModel.likesQuoteList.contains(quote) {
@@ -79,27 +105,19 @@ struct QuoteDetailView: View {
                 }
                     
                 // 텍스트 공유 기능
-//                ShareLink(item: String(quote.quote + "\n-" + quote.author + "-")) {
-//                    Label("", systemImage: "square.and.arrow.up")
-//                }
-                
-                ShareLink(item: Image("1"), preview: SharePreview("1", image: Image("1")))
-                
-                
-                
-                
-                
-                Button {
-                    // Share
-                    quoteDetailViewModel.shareQuote(quote.quote, quote.author)
-                    print("Button Tapped!")
-                } label: {
+                ShareLink(item: String(quote.quote + "\n-" + quote.author + "-")) {
                     Image(systemName: "square.and.arrow.up")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 30)
+                        .renderingMode(.template)
                         .foregroundColor(.gray)
                 }
+                
+                // 이미지 공유 기능
+                ShareLink(item: Image(uiImage: renderImage()), preview: SharePreview(quote.quote, image: Image(uiImage: renderImage()))) {
+                    Image(systemName: "square.and.arrow.up")
+                        .renderingMode(.template)
+                        .foregroundColor(.gray)
+                }
+                
             }
             .frame(maxWidth: .infinity)
             .padding(EdgeInsets(top: 50, leading: 0, bottom: 0, trailing: 0))

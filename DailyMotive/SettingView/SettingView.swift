@@ -24,7 +24,8 @@ struct SettingView: View {
         NavigationView {
             List {
                 Section("설정") {
-                    Text("알림 설정")
+                    // TODO: - 알림 설정 기능 구현
+                    //                    Text("알림 설정")
                     //                    Text("테마 변경")
                     NavigationLink {
                         FontView(settingViewModel: settingViewModel, customFont: $customFont)
@@ -155,7 +156,7 @@ extension SettingView {
         }
         if let windowScene = UIApplication.shared.connectedScenes
             .first(where: { $0 is UIWindowScene }) as? UIWindowScene,
-            let window = windowScene.windows.first {
+           let window = windowScene.windows.first {
             let vc = window.rootViewController
             let composeVC = MFMailComposeViewController()
             composeVC.mailComposeDelegate = mailComposeDelegate
