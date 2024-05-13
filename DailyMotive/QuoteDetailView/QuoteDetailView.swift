@@ -16,6 +16,8 @@ struct QuoteDetailView: View {
     
     private let customFont = FontManager.currentFont()
     
+    
+    
     // DEBUG
     private let url = URL(string: "https://github.com")!
     
@@ -81,12 +83,16 @@ struct QuoteDetailView: View {
 //                    Label("", systemImage: "square.and.arrow.up")
 //                }
                 
-//                ShareLink("export Sceenshot",  item: quoteDetailViewModel.generateImage(quote: quote.quote, author: quote.author))
+                ShareLink(item: Image("1"), preview: SharePreview("1", image: Image("1")))
+                
+                
+                
                 
                 
                 Button {
                     // Share
                     quoteDetailViewModel.shareQuote(quote.quote, quote.author)
+                    print("Button Tapped!")
                 } label: {
                     Image(systemName: "square.and.arrow.up")
                         .resizable()

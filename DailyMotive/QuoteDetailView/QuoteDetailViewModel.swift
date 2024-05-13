@@ -49,24 +49,21 @@ final class QuoteDetailViewModel: ObservableObject {
             .background(Color.white)
             .padding()
         
-        let image = view.snapshot()
+        let image = view.convertViewToImage()
         return image
     }
 }
 
 extension View {
-    func snapshot() -> UIImage {
-        let controller = UIHostingController(rootView: self)
-        let view = controller.view
-        
-        let targetSize = controller.view.intrinsicContentSize
-        view?.bounds = CGRect(origin: .zero, size: targetSize)
-        view?.backgroundColor = .clear
-        
-        let renderer = UIGraphicsImageRenderer(size: targetSize)
-        
-        return renderer.image { _ in
-            view?.drawHierarchy(in: controller.view.bounds, afterScreenUpdates: true)
+    func convertViewToImage( ) -> UIImage {
+
+        let view = UIHostingController(rootView: self)
+        let size = view.view.bounds.size
+        view.view.frame = CGRect(origin: .zero, size: size)
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let image = renderer.image { context in
+            view.view.layer.render(in: context.cgContext)
         }
+        return image
     }
 }
