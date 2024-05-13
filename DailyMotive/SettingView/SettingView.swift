@@ -153,18 +153,21 @@ extension SettingView {
         guard MFMailComposeViewController.canSendMail() else {
             return
         }
-        let vc = UIApplication.shared.keyWindow?.rootViewController
-        
-        let composeVC = MFMailComposeViewController()
-        composeVC.mailComposeDelegate = mailComposeDelegate
-        
-        let bodyString = "이곳에 내용을 작성해 주세요."
-        
-        composeVC.setToRecipients(["id1593572580@gmail.com"])
-        composeVC.setSubject("문의 사항")
-        composeVC.setMessageBody(bodyString, isHTML: false)
-        
-        vc?.present(composeVC, animated: true)
+        if let windowScene = UIApplication.shared.connectedScenes
+            .first(where: { $0 is UIWindowScene }) as? UIWindowScene,
+            let window = windowScene.windows.first {
+            let vc = window.rootViewController
+            let composeVC = MFMailComposeViewController()
+            composeVC.mailComposeDelegate = mailComposeDelegate
+            
+            let bodyString = "이곳에 내용을 작성해 주세요."
+            
+            composeVC.setToRecipients(["id1593572580@gmail.com"])
+            composeVC.setSubject("문의 사항")
+            composeVC.setMessageBody(bodyString, isHTML: false)
+            
+            vc?.present(composeVC, animated: true)
+        }
     }
 }
 
