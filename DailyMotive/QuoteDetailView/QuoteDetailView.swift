@@ -106,16 +106,30 @@ struct QuoteDetailView: View {
                     
                 // 텍스트 공유 기능
                 ShareLink(item: String(quote.quote + "\n-" + quote.author + "-")) {
-                    Image(systemName: "square.and.arrow.up")
-                        .renderingMode(.template)
-                        .foregroundColor(.gray)
+                    Label {
+                        Text("")
+                    } icon: {
+                        Image(systemName: "text.quote")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.gray)
+                    }
+
                 }
                 
                 // 이미지 공유 기능
                 ShareLink(item: Image(uiImage: renderImage()), preview: SharePreview(quote.quote, image: Image(uiImage: renderImage()))) {
-                    Image(systemName: "square.and.arrow.up")
-                        .renderingMode(.template)
-                        .foregroundColor(.gray)
+                    Label {
+                        Text("")
+                    } icon: {
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.gray)
+                    }
+
                 }
                 
             }
