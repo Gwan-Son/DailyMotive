@@ -12,40 +12,53 @@ struct HomeView: View {
     
     @StateObject var homeViewModel: HomeViewModel = HomeViewModel()
     @EnvironmentObject var likesQuoteViewModel: LikesViewModel
+    @State var isLaunching: Bool = true
     
     var body: some View {
-        if homeViewModel.isLoading {
-            LoadingView()
-        }
-        else {
-            
-            TabView(selection: $homeViewModel.selectedTab) {
-                RandomQuoteView()
-                    .environmentObject(homeViewModel.randomQuoteViewModel)
-                    .tabItem {
-                        Image(systemName: "quote.bubble")
+        if isLaunching {
+            SplashView()
+                .opacity(isLaunching ? 1 : 0)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        withAnimation(.easeIn(duration: 1)) {
+                            isLaunching = false
+                        }
                     }
-                    .tag(Tab.home)
-                CategoryView()
-                    .environmentObject(homeViewModel)
-                    .tabItem {
-                        Image(systemName: "folder")
-                    }
-                    .tag(Tab.search)
-                LikesView()
-                    .tabItem {
-                        Image(systemName: "heart")
-                    }
-                    .tag(Tab.likes)
-                
-                SettingView(homeViewModel: homeViewModel)
-                    .tabItem {
-                        Image(systemName: "gearshape")
-                    }
-                    .tag(Tab.setting)
+                }
+        } else {
+            if homeViewModel.isLoading {
+                LoadingView()
             }
-            .accentColor(.pink)
-            
+            else {
+                
+                TabView(selection: $homeViewModel.selectedTab) {
+                    RandomQuoteView()
+                        .environmentObject(homeViewModel.randomQuoteViewModel)
+                        .tabItem {
+                            Image(systemName: "quote.bubble")
+                        }
+                        .tag(Tab.home)
+                    CategoryView()
+                        .environmentObject(homeViewModel)
+                        .tabItem {
+                            Image(systemName: "folder")
+                        }
+                        .tag(Tab.search)
+                    LikesView()
+                        .tabItem {
+                            Image(systemName: "heart")
+                        }
+                        .tag(Tab.likes)
+                    
+                    SettingView(homeViewModel: homeViewModel)
+                        .tabItem {
+                            Image(systemName: "gearshape")
+                        }
+                        .tag(Tab.setting)
+                }
+                .accentColor(.pink)
+                
+            }
         }
     }
 }
