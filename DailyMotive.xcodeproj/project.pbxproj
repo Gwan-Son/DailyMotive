@@ -50,6 +50,7 @@
 		9FEF3BD32BD6338C001A60D0 /* DailyMotiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEF3BD22BD6338C001A60D0 /* DailyMotiveUITests.swift */; };
 		9FEF3BD52BD6338C001A60D0 /* DailyMotiveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEF3BD42BD6338C001A60D0 /* DailyMotiveUITestsLaunchTests.swift */; };
 		9FEF3BE22BD633C1001A60D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FEF3BE12BD633C1001A60D0 /* HomeView.swift */; };
+		9FF8E0B62BFDCA5E00A9C5C2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FF8E0B52BFDCA5E00A9C5C2 /* QuizView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		9FEF3BD22BD6338C001A60D0 /* DailyMotiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMotiveUITests.swift; sourceTree = "<group>"; };
 		9FEF3BD42BD6338C001A60D0 /* DailyMotiveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMotiveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9FEF3BE12BD633C1001A60D0 /* HomeView.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; tabWidth = 4; };
+		9FF8E0B52BFDCA5E00A9C5C2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 				9FE19CBA2BE10894009ABB72 /* QuoteDetailView */,
 				9FE19CBD2BE108EC009ABB72 /* LikesView */,
 				9F2B6FDF2BE37EB500D65709 /* SettingView */,
+				9FF8E0B72BFDCA6200A9C5C2 /* QuizView */,
 				9FA292782BD6429E001889E2 /* LoadingView */,
 				9FEF3BBB2BD6338C001A60D0 /* Assets.xcassets */,
 				9FEF3BBD2BD6338C001A60D0 /* Preview Content */,
@@ -339,6 +342,14 @@
 				9FEF3BD42BD6338C001A60D0 /* DailyMotiveUITestsLaunchTests.swift */,
 			);
 			path = DailyMotiveUITests;
+			sourceTree = "<group>";
+		};
+		9FF8E0B72BFDCA6200A9C5C2 /* QuizView */ = {
+			isa = PBXGroup;
+			children = (
+				9FF8E0B52BFDCA5E00A9C5C2 /* QuizView.swift */,
+			);
+			path = QuizView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,6 +502,7 @@
 				9FA2927A2BD642C5001889E2 /* Quotes.swift in Sources */,
 				9F7A67742BF5DF500068DB61 /* SplashView.swift in Sources */,
 				9FA292822BD7719D001889E2 /* RandomQuoteView.swift in Sources */,
+				9FF8E0B62BFDCA5E00A9C5C2 /* QuizView.swift in Sources */,
 				9F3576F72BECCB66007822ED /* AppVersion.swift in Sources */,
 				9FA292802BD64570001889E2 /* QuoteResponse.swift in Sources */,
 				9FE19CBC2BE108E9009ABB72 /* LikesView.swift in Sources */,
