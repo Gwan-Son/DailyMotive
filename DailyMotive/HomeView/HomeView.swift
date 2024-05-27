@@ -38,6 +38,12 @@ struct HomeView: View {
                             Image(systemName: "quote.bubble")
                         }
                         .tag(Tab.home)
+                    QuizView()
+                        .environmentObject(homeViewModel)
+                        .tabItem {
+                            Image(systemName: "questionmark.bubble")
+                        }
+                        .tag(Tab.quiz)
                     CategoryView()
                         .environmentObject(homeViewModel)
                         .tabItem {

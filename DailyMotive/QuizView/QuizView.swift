@@ -9,57 +9,61 @@ import SwiftUI
 
 struct QuizView: View {
     
-    @State private var quotes = Quotes.list
-    @State private var currentQuote: Quotes?
-    @State private var selectedAuthor: String = ""
-    @State private var showResult: Bool = false
+    @EnvironmentObject var homeViewModel: HomeViewModel
+    @StateObject var quizViewModel = QuizViewModel()
+    
     
     private let customFont = FontManager.currentFont()
     
     var body: some View {
         VStack {
             Spacer()
-            if let currentQuote = currentQuote {
-                Text(currentQuote.quote)
+            
+            if !quizViewModel.shuffledQuotes.isEmpty{
+                Text(quizViewModel.currentQuote.quote)
                     .font(customFont.quoteFont)
                     .padding()
                 
-                ForEach(quotes.shuffled(), id: \.id) { quote in
+                ForEach(quizViewModel.shuffledQuotes, id: \.id) { quote in
                     Button {
-                        selectedAuthor = quote.author
-                        showResult = true
+                        quizViewModel.selectedAuthor = quote.author
+                        quizViewModel.showResult = true
                     } label: {
                         Text(quote.author)
                             .font(customFont.authorFont)
                             .padding()
-                            .background(.blue)
+                            .frame(width: 150)
+                            .background(.pink)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                             .padding(.vertical, 5)
                     }
                 }
-                Spacer()
-            } else {
+            }
+            else {
                 LoadingView()
             }
+            
+            Spacer()
         }
-        .onAppear(perform: loadNewQuote)
-        .alert(isPresented: $showResult) {
+        .padding(EdgeInsets(top: 0, leading: 30, bottom: 20, trailing: 30))
+        .onAppear(perform: {quizViewModel.loadNewQuote(quote: homeViewModel.quotes)})
+        .alert(isPresented: $quizViewModel.showResult) {
             Alert(
-                title: Text(selectedAuthor == currentQuote?.author ? "Correct!" : "Wrong"),
-                message: Text(selectedAuthor == currentQuote?.author ? "You got it right!" : "The correct answer was \(currentQuote?.author ?? "")"),
-                dismissButton: .default(Text("Next"), action: loadNewQuote))
+                title: Text(quizViewModel.selectedAuthor == quizViewModel.currentQuote.author ? "Correct!" : "Wrong"),
+                message: Text(quizViewModel.selectedAuthor == quizViewModel.currentQuote.author ? "You got it right!" : "The correct answer was \(quizViewModel.currentQuote.author )"),
+                primaryButton: .default(Text("Next"), action: {
+                    quizViewModel.loadNewQuote(quote: homeViewModel.quotes)
+                }),
+                secondaryButton: .default(Text("See"), action: quizViewModel.showingDetail))
         }
-    }
-    
-    func loadNewQuote() {
-        if !quotes.isEmpty {
-            currentQuote = quotes.randomElement()
-            showResult = false
-        }
+        .sheet(isPresented: $quizViewModel.isShowingDetail, content: {
+            QuoteDetailView(quote: $quizViewModel.currentQuote)
+        })
     }
 }
 
 #Preview {
-    QuizView()
+    QuizView(quizViewModel: QuizViewModel())
+        .environmentObject(HomeViewModel())
 }

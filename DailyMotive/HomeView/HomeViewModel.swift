@@ -32,7 +32,7 @@ final class HomeViewModel: ObservableObject {
     @Published var category: [Category] = Category.list
     
     // Quotes들이 담길 배열
-    @Published private(set) var quotes = [Quotes]()
+    @Published var quotes = [Quotes]()
     
     // 로딩 중인지
     @Published var isLoading: Bool = false
@@ -48,7 +48,7 @@ final class HomeViewModel: ObservableObject {
         
         network.load(resource)
             // 디버깅용 코드
-            // .print("DEBUG: ")
+//             .print("DEBUG: ")
             // "quotes" 이름만 가져옴
             .map { $0.quotes }
             // 에러처리는 빈 배열로 리턴

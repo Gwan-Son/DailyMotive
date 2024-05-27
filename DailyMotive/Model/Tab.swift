@@ -9,6 +9,7 @@ import Foundation
 
 enum Tab {
     case home
+    case quiz
     case search
     case likes
     case setting

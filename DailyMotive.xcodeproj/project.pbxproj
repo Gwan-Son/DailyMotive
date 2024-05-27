@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F0FEF902C043E680029484B /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FEF8F2C043E680029484B /* QuizViewModel.swift */; };
 		9F10B70F2BE530D3009E786A /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10B70E2BE530D3009E786A /* FontManager.swift */; };
 		9F10B7152BE53527009E786A /* OTLaundryGothicR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B7142BE53527009E786A /* OTLaundryGothicR.otf */; };
 		9F10B7172BE545CA009E786A /* FontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10B7162BE545CA009E786A /* FontView.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F0FEF8F2C043E680029484B /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		9F10B70E2BE530D3009E786A /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		9F10B7132BE532D7009E786A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F10B7142BE53527009E786A /* OTLaundryGothicR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OTLaundryGothicR.otf; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				9FF8E0B52BFDCA5E00A9C5C2 /* QuizView.swift */,
+				9F0FEF8F2C043E680029484B /* QuizViewModel.swift */,
 			);
 			path = QuizView;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				9FEF3BE22BD633C1001A60D0 /* HomeView.swift in Sources */,
 				9FA2928E2BD8EC10001889E2 /* CategoryView.swift in Sources */,
 				9FA292742BD64228001889E2 /* Resource.swift in Sources */,
+				9F0FEF902C043E680029484B /* QuizViewModel.swift in Sources */,
 				9F10B70F2BE530D3009E786A /* FontManager.swift in Sources */,
 				9F44E9102BDB968600F942AA /* QuoteDetailView.swift in Sources */,
 				9FA2928A2BD79A45001889E2 /* QuoteListView.swift in Sources */,
