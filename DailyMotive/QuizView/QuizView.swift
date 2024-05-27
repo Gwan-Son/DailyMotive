@@ -26,7 +26,7 @@ struct QuizView: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                 }
-                .padding(2)
+                .padding(1)
             }
         }
     }
