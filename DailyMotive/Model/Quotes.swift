@@ -37,6 +37,7 @@ struct Quotes: Hashable, Codable, Identifiable {
 
 extension Quotes {
     static let list = [
+        Quotes(author: "김해 사는 슬픈 눈의 청년", quote: "그러니까 내가.. 누군가를 이제 좋아한다는 사실이 그 사람한테는 상처가 될 수 있잖아요..", category: 1),
         Quotes(author: "마더 테레사", quote: "강렬한 사랑은 판단하지 않는다. 주기만 할 뿐이다.", category: 1),
         Quotes(author: "버트런트 러셀", quote: "사랑을 두려워하는 것은 삶을 두려워하는 것과 같으며, 삶을 두려워 하는 사람은 이미 세 부분이 죽은 상태다.", category: 1),
         Quotes(author: "빌 게이츠", quote: "여러분의 선생님이 엄격하다고 생각한다면, 직장 상사를 만날 때까지 기다려보세요. 상사는 (선생님처럼) 종신제가 아니니까요.(더 엄격할 거예요.)", category: 2),
