@@ -13,10 +13,12 @@
 		9F0FEF9D2C044D200029484B /* QuoteWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FEF9C2C044D200029484B /* QuoteWidgetBundle.swift */; };
 		9F0FEF9F2C044D200029484B /* QuoteWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FEF9E2C044D200029484B /* QuoteWidgetLiveActivity.swift */; };
 		9F0FEFA12C044D200029484B /* QuoteWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FEFA02C044D200029484B /* QuoteWidget.swift */; };
-		9F0FEFA32C044D200029484B /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FEFA22C044D200029484B /* AppIntent.swift */; };
 		9F0FEFA52C044D210029484B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F0FEFA42C044D210029484B /* Assets.xcassets */; };
 		9F0FEFA92C044D210029484B /* QuoteWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9F0FEF952C044D200029484B /* QuoteWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9F0FEFAF2C04506D0029484B /* QuotesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FEFAE2C04506D0029484B /* QuotesWidget.swift */; };
+		9F0FEFB22C06E4E30029484B /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA292792BD642C5001889E2 /* Quotes.swift */; };
+		9F0FEFB32C06E59C0029484B /* LikesQuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE19CC12BE109A3009ABB72 /* LikesQuoteManager.swift */; };
+		9F0FEFBA2C06FE430029484B /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FEFB62C06FBA20029484B /* AppIntent.swift */; };
 		9F10B70F2BE530D3009E786A /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10B70E2BE530D3009E786A /* FontManager.swift */; };
 		9F10B7152BE53527009E786A /* OTLaundryGothicR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B7142BE53527009E786A /* OTLaundryGothicR.otf */; };
 		9F10B7172BE545CA009E786A /* FontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10B7162BE545CA009E786A /* FontView.swift */; };
@@ -109,10 +111,12 @@
 		9F0FEF9C2C044D200029484B /* QuoteWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidgetBundle.swift; sourceTree = "<group>"; };
 		9F0FEF9E2C044D200029484B /* QuoteWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		9F0FEFA02C044D200029484B /* QuoteWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWidget.swift; sourceTree = "<group>"; };
-		9F0FEFA22C044D200029484B /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		9F0FEFA42C044D210029484B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F0FEFA62C044D210029484B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F0FEFAE2C04506D0029484B /* QuotesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesWidget.swift; sourceTree = "<group>"; };
+		9F0FEFB42C06F2D60029484B /* DailyMotive.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DailyMotive.entitlements; sourceTree = "<group>"; };
+		9F0FEFB52C06F3050029484B /* QuoteWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QuoteWidgetExtension.entitlements; sourceTree = "<group>"; };
+		9F0FEFB62C06FBA20029484B /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		9F10B70E2BE530D3009E786A /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		9F10B7132BE532D7009E786A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9F10B7142BE53527009E786A /* OTLaundryGothicR.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OTLaundryGothicR.otf; sourceTree = "<group>"; };
@@ -212,7 +216,7 @@
 				9F0FEF9C2C044D200029484B /* QuoteWidgetBundle.swift */,
 				9F0FEF9E2C044D200029484B /* QuoteWidgetLiveActivity.swift */,
 				9F0FEFA02C044D200029484B /* QuoteWidget.swift */,
-				9F0FEFA22C044D200029484B /* AppIntent.swift */,
+				9F0FEFB62C06FBA20029484B /* AppIntent.swift */,
 				9F0FEFA42C044D210029484B /* Assets.xcassets */,
 				9F0FEFA62C044D210029484B /* Info.plist */,
 			);
@@ -351,6 +355,7 @@
 		9FEF3BAB2BD6338B001A60D0 = {
 			isa = PBXGroup;
 			children = (
+				9F0FEFB52C06F3050029484B /* QuoteWidgetExtension.entitlements */,
 				9FEF3BB62BD6338B001A60D0 /* DailyMotive */,
 				9FEF3BC72BD6338C001A60D0 /* DailyMotiveTests */,
 				9FEF3BD12BD6338C001A60D0 /* DailyMotiveUITests */,
@@ -374,6 +379,7 @@
 		9FEF3BB62BD6338B001A60D0 /* DailyMotive */ = {
 			isa = PBXGroup;
 			children = (
+				9F0FEFB42C06F2D60029484B /* DailyMotive.entitlements */,
 				9F10B7132BE532D7009E786A /* Info.plist */,
 				9FEF3BB72BD6338B001A60D0 /* DailyMotiveApp.swift */,
 				9F10B7102BE53254009E786A /* Font */,
@@ -599,9 +605,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F0FEF9D2C044D200029484B /* QuoteWidgetBundle.swift in Sources */,
-				9F0FEFA32C044D200029484B /* AppIntent.swift in Sources */,
+				9F0FEFB22C06E4E30029484B /* Quotes.swift in Sources */,
+				9F0FEFB32C06E59C0029484B /* LikesQuoteManager.swift in Sources */,
 				9F0FEFA12C044D200029484B /* QuoteWidget.swift in Sources */,
 				9F0FEF9F2C044D200029484B /* QuoteWidgetLiveActivity.swift in Sources */,
+				9F0FEFBA2C06FE430029484B /* AppIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = QuoteWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7P5U4N4C5Z;
@@ -717,6 +726,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = QuoteWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7P5U4N4C5Z;
@@ -865,6 +875,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DailyMotive/DailyMotive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DailyMotive/Preview Content\"";
@@ -898,6 +909,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DailyMotive/DailyMotive.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DailyMotive/Preview Content\"";

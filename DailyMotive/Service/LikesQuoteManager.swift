@@ -10,11 +10,17 @@ import Foundation
 class LikesQuoteManager {
     static let shared = LikesQuoteManager()
     private let fileManager = FileManager.default
-    private var documentDirectoryURL: URL {
-        return fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+    private let appGroupIdentifier = "group.kr.gwanson.DailyMotive" // 앱 그룹 식별자
+    
+    private var sharedContainerURL: URL {
+        return fileManager.containerURL(forSecurityApplicationGroupIdentifier: appGroupIdentifier)!
     }
+    
+//    private var documentDirectoryURL: URL {
+//        return fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+//    }
     private var likesQuoteFolderURL: URL {
-        return documentDirectoryURL.appendingPathComponent("LikesQuoteFolder")
+        return sharedContainerURL.appendingPathComponent("LikesQuoteFolder")
     }
     private var likesQuoteFileURL: URL {
         return likesQuoteFolderURL.appendingPathComponent("LikesQuote.json")
@@ -27,6 +33,7 @@ class LikesQuoteManager {
         do {
             if !fileManager.fileExists(atPath: likesQuoteFolderURL.path) {
                 try fileManager.createDirectory(at: likesQuoteFolderURL, withIntermediateDirectories: true, attributes: nil)
+                print("LikesQuoteFolder created at path: \(likesQuoteFolderURL.path)")
             }
         } catch {
             print("Failed to create LikesQuoteFolder: \(error.localizedDescription)")
@@ -44,9 +51,19 @@ class LikesQuoteManager {
     
     func loadLikesQuote() -> [Quotes] {
         do {
-            let data = try Data(contentsOf: likesQuoteFileURL)
-            let likesQuoteList = try JSONDecoder().decode([Quotes].self, from: data)
-            return likesQuoteList
+            print("Loading quotes from file: \(likesQuoteFileURL.path)")
+            if fileManager.fileExists(atPath: likesQuoteFileURL.path) {
+                let data = try Data(contentsOf: likesQuoteFileURL)
+                let likesQuoteList = try JSONDecoder().decode([Quotes].self, from: data)
+                print("Quotes loaded successfully.")
+                return likesQuoteList
+            } else {
+                print("File does not exist at path: \(likesQuoteFileURL.path)")
+                return []
+            }
+//            let data = try Data(contentsOf: likesQuoteFileURL)
+//            let likesQuoteList = try JSONDecoder().decode([Quotes].self, from: data)
+//            return likesQuoteList
         } catch {
             print("Failed load LikesQuoteList: \(error.localizedDescription)")
             return []
