@@ -75,6 +75,7 @@ struct QuoteWidget: Widget {
             QuoteWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
+        .supportedFamilies([.systemMedium,.systemLarge])
     }
 }
 
