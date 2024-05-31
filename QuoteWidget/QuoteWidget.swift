@@ -52,18 +52,17 @@ struct QuoteWidgetEntryView : View {
         VStack(alignment: .leading) {
             
             Text(entry.quotes.quote)
-                .font(.body)
+                .font(.custom("GangwonEduAll-OTFLight", size: 14))
                 .bold()
                 .minimumScaleFactor(0.5)
                 .lineLimit(nil)
                 .padding(.bottom, 5)
             
             Text(entry.quotes.author)
-                .font(.footnote)
+                .font(.custom("GangwonEduAll-OTFLight", size: 10))
                 .foregroundColor(.gray)
                 .padding(.bottom, 10)
         }
-        .padding()
     }
 }
 

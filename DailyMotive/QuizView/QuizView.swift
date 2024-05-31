@@ -20,6 +20,10 @@ struct QuizView: View {
             Spacer()
             
             if !quizViewModel.shuffledQuotes.isEmpty{
+                Text("Q. 해당 명언을 한 위인을 골라주세요.")
+                    .font(customFont.buttonFont)
+                    .padding()
+                
                 Text(quizViewModel.currentQuote.quote)
                     .font(customFont.quoteFont)
                     .padding()
@@ -50,12 +54,12 @@ struct QuizView: View {
         .onAppear(perform: {quizViewModel.loadNewQuote(quote: homeViewModel.quotes)})
         .alert(isPresented: $quizViewModel.showResult) {
             Alert(
-                title: Text(quizViewModel.selectedAuthor == quizViewModel.currentQuote.author ? "Correct!" : "Wrong"),
-                message: Text(quizViewModel.selectedAuthor == quizViewModel.currentQuote.author ? "You got it right!" : "The correct answer was \(quizViewModel.currentQuote.author )"),
-                primaryButton: .default(Text("Next"), action: {
+                title: Text(quizViewModel.selectedAuthor == quizViewModel.currentQuote.author ? "정답!😆" : "틀렸어요😢"),
+                message: Text(quizViewModel.selectedAuthor == quizViewModel.currentQuote.author ? "맞췄어요!" : "A. 해당 명언을 한 인물은 \(quizViewModel.currentQuote.author )입니다."),
+                primaryButton: .default(Text("다음"), action: {
                     quizViewModel.loadNewQuote(quote: homeViewModel.quotes)
                 }),
-                secondaryButton: .default(Text("See"), action: quizViewModel.showingDetail))
+                secondaryButton: .default(Text("명언 보기"), action: quizViewModel.showingDetail))
         }
         .sheet(isPresented: $quizViewModel.isShowingDetail, content: {
             QuoteDetailView(quote: $quizViewModel.currentQuote)

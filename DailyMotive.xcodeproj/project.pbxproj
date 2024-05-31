@@ -19,6 +19,7 @@
 		9F0FEFB22C06E4E30029484B /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA292792BD642C5001889E2 /* Quotes.swift */; };
 		9F0FEFB32C06E59C0029484B /* LikesQuoteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE19CC12BE109A3009ABB72 /* LikesQuoteManager.swift */; };
 		9F0FEFBA2C06FE430029484B /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0FEFB62C06FBA20029484B /* AppIntent.swift */; };
+		9F0FEFBD2C0977F90029484B /* 강원교육모두.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B71A2BE6DB86009E786A /* 강원교육모두.otf */; };
 		9F10B70F2BE530D3009E786A /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10B70E2BE530D3009E786A /* FontManager.swift */; };
 		9F10B7152BE53527009E786A /* OTLaundryGothicR.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9F10B7142BE53527009E786A /* OTLaundryGothicR.otf */; };
 		9F10B7172BE545CA009E786A /* FontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F10B7162BE545CA009E786A /* FontView.swift */; };
@@ -564,6 +565,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F0FEFA52C044D210029484B /* Assets.xcassets in Resources */,
+				9F0FEFBD2C0977F90029484B /* 강원교육모두.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

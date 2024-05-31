@@ -20,7 +20,17 @@ final class QuizViewModel: ObservableObject {
     
     func loadNewQuote(quote: [Quotes]) {
         if !quote.isEmpty {
-            shuffledQuotes = Array(quote.shuffled().prefix(4))
+            var seenAuthor: Set<String> = []
+            shuffledQuotes.removeAll()
+            for element in quote.shuffled() {
+                if seenAuthor.contains(element.author) == false {
+                    shuffledQuotes.append(element)
+                    seenAuthor.insert(element.author)
+                }
+                if shuffledQuotes.count == 4 {
+                    break
+                }
+            }
             currentQuote = shuffledQuotes.randomElement()!
             showResult = false
         }
