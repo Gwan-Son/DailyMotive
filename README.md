@@ -4,6 +4,9 @@
 ## 목차
 - [🚀 개발 기간](#-개발-기간)
 - [💻 개발 환경](#-개발-환경)
+- [🌐 Combine을 통한 비동기 처리](#-combine을-통한-비동기-처리)
+- [📐 MVVM 아키텍쳐](#-mvvm-아키텍쳐)
+- [✏️ 글씨체 변경](#-글씨체-변경)
 - [📁 파일 구조](#-파일-구조)
 
 ---
@@ -20,6 +23,87 @@
   <img src="https://github.com/Gwan-Son/DailyMotive/assets/38202152/49df7862-946b-480f-8c92-3a96d188cd22" width="30%">
   <img src="https://github.com/Gwan-Son/DailyMotive/assets/38202152/f2d855b6-9df2-473c-b8f5-687fb6809168" width="30%">
 </p>
+
+# 🌐 Combine을 통한 비동기 처리
+URLSession을 통해 JSON파일을 불러오는 코드를 Combine을 통해 비동기 처리를 하였습니다. Combine을 사용하지 않았을 때는 JSON을 파일을 불러오려면 콜백함수를 작성하고 수동으로 데이터 변환 코드를 작성해야하지만, Combine을 활용하면 단일 구문으로 데이터 스트림을 설정할 수 있고 'map' 연산자를 사용하여 간단하게 데이터를 변환할 수 있었습니다. 또한, 코드 유지보수를 할 때에도 선언적 프로그래밍을 통해 코드의 가독성을 높여 간편히 할 수 있었습니다.
+```
+//NetworkService.swift
+final class NetworkService {
+    let session: URLSession
+    
+    init(configuration: URLSessionConfiguration) {
+        session = URLSession(configuration: configuration)
+    }
+    
+    func load<T>(_ resource: Resource<T>) -> AnyPublisher<T, Error> {
+        guard let request = resource.urlRequest else {
+            return .fail(NetworkError.invalidRequest)
+        }
+        
+        return session
+            .dataTaskPublisher(for: request)
+            .tryMap { result -> Data in
+                guard let response = result.response as? HTTPURLResponse,
+                      (200..<300).contains(response.statusCode)
+                else {
+                    let response = result.response as? HTTPURLResponse
+                    let statusCode = response?.statusCode ?? -1
+                    throw NetworkError.responseError(statusCode: statusCode)
+                }
+                return result.data
+            }
+            .decode(type: T.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
+    }
+}
+```
+
+```
+//homeViewModel.swift
+network.load(resource)
+            // "quotes" 이름만 가져옴
+            .map { $0.quotes }
+            // 에러처리는 빈 배열로 리턴
+            .replaceError(with: [])
+            // 해당 코드가 돌아갈 쓰레드
+            .receive(on: DispatchQueue.main)
+            // 가져온 결과값을 quotes 배열에 저장
+            .sink(receiveValue: { [weak self] fetchQuotes in
+                self?.quotes = fetchQuotes
+                self?.randomQuoteViewModel.setup(with: fetchQuotes)
+                self?.isLoading = false // 데이터 로딩 완료
+            })
+            .store(in: &subscriptions)
+```
+
+# 📐 MVVM 아키텍쳐
+MVVM 아키텍쳐를 사용함으로써 View와 Model 간의 명확한 분리로 코드의 모듈화를 하였습니다. ViewModel의 데이터를 바인딩하여 View에 사용하는 방식으로 코드의 재사용성과 유지보수성을 향상하였습니다.
+
+<img width="224" src="https://github.com/Gwan-Son/DailyMotive/assets/38202152/d4093a16-6937-4377-886c-ebbfe0858ba0">
+
+# ✏️ 글씨체 변경
+FontManager 클래스를 생성하여 다양한 Font를 사용자가 변경하여 사용할 수 있게끔 하였습니다.
+고정된 폰트가 아니라 사용자가 폰트를 선택할 수 있어서 유저 사이드에서 사용하였을 때 자유도를 향상하였습니다.
+
+<img width="224" src="https://github.com/Gwan-Son/DailyMotive/assets/38202152/def01501-9482-4427-91ec-eca5be0b7151">
+
+```
+//FontManager.swift
+class FontManager {
+    static func currentFont() -> Fonts {
+        if let storedFont = (UserDefaults.standard.value(forKey: selectedFontKey) as AnyObject).integerValue {
+            return Fonts(rawValue: storedFont)!
+        } else { // 처음 폰트
+            return .gwonAll
+        }
+    }
+    
+    static func applyFont(font: Fonts) {
+        UserDefaults.standard.setValue(font.rawValue, forKey: selectedFontKey)
+        UserDefaults.standard.synchronize()
+    }
+}
+```
 
 # 📁 파일 구조
 ```
